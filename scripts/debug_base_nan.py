@@ -4,9 +4,9 @@ import torch
 from transformers import AutoModelForImageTextToText, AutoProcessor
 from PIL import Image
 
-BASE = "/mnt/e/vlm-data/models/Qwen2.5-VL-3B-Instruct"
-IMG_BAD = "/mnt/d/vlm-active/frames/trafficqa/sg_03_016.jpg"
-IMG_OK = "/mnt/d/vlm-active/frames/trafficqa/sg_02_019.jpg"
+BASE = "/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct"
+IMG_BAD = "/home/lawson/vlm-active/frames/trafficqa/sg_03_016.jpg"
+IMG_OK = "/home/lawson/vlm-active/frames/trafficqa/sg_02_019.jpg"
 Q = "图中这个人是在推行还是骑行这辆车？"
 
 device = "cuda"

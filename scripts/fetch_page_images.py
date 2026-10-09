@@ -9,7 +9,7 @@
 → 内容哈希去重 → 存盘并记录来源页面（可追溯、可人工复核）。
 
 用法：
-    python fetch_page_images.py --out /mnt/d/vlm-active/frames/web_news --urls-file urls.txt
+    python fetch_page_images.py --out /home/lawson/vlm-active/frames/web_news --urls-file urls.txt
 """
 
 import argparse

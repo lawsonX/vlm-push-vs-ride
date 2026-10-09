@@ -5,8 +5,8 @@ import torch
 from transformers import AutoModelForImageTextToText, AutoProcessor
 from PIL import Image
 
-MODEL = "/mnt/d/vlm-active/models/Qwen2.5-VL-3B-Instruct"
-FRAMES = "/mnt/d/vlm-active/frames/trafficqa"
+MODEL = "/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct"
+FRAMES = "/home/lawson/vlm-active/frames/trafficqa"
 Q = "图中这个人是在推行还是骑行这辆车？"
 
 test = [json.loads(l) for l in open("/tmp/test_balanced.jsonl", encoding="utf-8")]
@@ -32,5 +32,5 @@ for r in test:
         print("BAD:", r["frame_id"], r["label"], flush=True)
 
 print(f"测试集 48 张中 NaN 帧: {len(bad)} -> {bad}")
-with open("/mnt/d/vlm-active/results/nan_test_frames.json", "w") as f:
+with open("/home/lawson/vlm-active/results/nan_test_frames.json", "w") as f:
     json.dump(bad, f)

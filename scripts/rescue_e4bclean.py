@@ -2,7 +2,7 @@ import os, signal, shutil
 from safetensors import safe_open
 import torch
 
-final = "/mnt/d/vlm-active/ckpt/e4b_clean/final"
+final = "/home/lawson/vlm-active/ckpt/e4b_clean/final"
 tmp = os.path.join(final, [f for f in os.listdir(final) if f.startswith(".tmp")][0])
 
 # 1. 验证 tmp 完整性：merger 必须非零、嵌入可读
@@ -29,7 +29,7 @@ for pid in os.listdir("/proc"):
 
 # 3. 转正 + 补文件
 os.rename(tmp, os.path.join(final, "model.safetensors"))
-base = "/mnt/d/vlm-active/models/Qwen2.5-VL-3B-Instruct"
+base = "/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct"
 for fn in ["tokenizer.json", "tokenizer_config.json", "vocab.json", "merges.txt",
            "preprocessor_config.json", "chat_template.json"]:
     s = os.path.join(base, fn)

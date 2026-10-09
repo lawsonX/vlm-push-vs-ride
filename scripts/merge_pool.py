@@ -2,13 +2,13 @@ import json
 import shutil
 from pathlib import Path
 
-frames = Path("/mnt/d/vlm-active/frames/trafficqa")
+frames = Path("/home/lawson/vlm-active/frames/trafficqa")
 combined = []
 
 # web 命中放最前（推行高发场景），三个来源目录
-for src_dir in ["/mnt/d/vlm-active/frames/web_sogou2",
-                "/mnt/d/vlm-active/frames/web_sogou",
-                "/mnt/d/vlm-active/frames/web_news"]:
+for src_dir in ["/home/lawson/vlm-active/frames/web_sogou2",
+                "/home/lawson/vlm-active/frames/web_sogou",
+                "/home/lawson/vlm-active/frames/web_news"]:
     d = Path(src_dir)
     mf = d / "pool_manifest.jsonl"
     if not mf.exists():

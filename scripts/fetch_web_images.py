@@ -9,7 +9,7 @@
 内容哈希去重 → 写清单（记录来源 query 和页面，可追溯）。
 
 用法：
-    python fetch_web_images.py --out /mnt/d/vlm-active/frames/web_push
+    python fetch_web_images.py --out /home/lawson/vlm-active/frames/web_push
 """
 
 import argparse

@@ -5,7 +5,7 @@
 （2 推行 + 2 骑行示例图）能否不动权重就提升？对 3 个云端模型跑 48 帧测试集，
 对比它们零样本的旧数字（4.4 节）。
 
-输出：/mnt/d/vlm-active/results/fewshot_3models.jsonl
+输出：/home/lawson/vlm-active/results/fewshot_3models.jsonl
 """
 import base64
 import json
@@ -17,8 +17,8 @@ from openai import OpenAI
 
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 Q = "图中这个人是在推行还是骑行这辆车？只回答「推行」或「骑行」。"
-FRAMES = "/mnt/d/vlm-active/frames/trafficqa"
-OUT = "/mnt/d/vlm-active/results/fewshot_3models.jsonl"
+FRAMES = "/home/lawson/vlm-active/frames/trafficqa"
+OUT = "/home/lawson/vlm-active/results/fewshot_3models.jsonl"
 MODELS = ["qwen3.5-omni-flash"]
 
 # 4-shot 示例：2 推行用测试集中的明确例（sg_05_000/sg_10_005，E5 全对的最 clear 案例），
@@ -45,7 +45,7 @@ def b64(p):
 
 
 def main():
-    key = Path("/root/vlm-lab/api_testing/api_key.txt").read_text().strip()
+    key = Path(__file__).parent / "api_key.txt".read_text().strip()
     client = OpenAI(api_key=key, base_url=BASE_URL)
 
     test = [json.loads(l) for l in open("/tmp/test_balanced.jsonl")]

@@ -15,9 +15,9 @@
 
 用法：
     python mine_natural_pairs.py --annotations a.jsonl \
-        --bili-manifest /mnt/d/vlm-active/frames/bili/manifest.jsonl \
-        --video-dir /mnt/e/vlm-data/raw/bili_videos \
-        --out-dir /mnt/d/vlm-active/frames/natr --out pairs_natural.jsonl
+        --bili-manifest /home/lawson/vlm-active/frames/bili/manifest.jsonl \
+        --video-dir /home/lawson/vlm-data/raw/bili_videos \
+        --out-dir /home/lawson/vlm-active/frames/natr --out pairs_natural.jsonl
 """
 import argparse
 import json

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """NaN 帧分布分析：按数据来源、标注类别统计 NaN 率。
 
-输入：/mnt/d/vlm-active/results/nan_frames.json（扫描产物）
-输出：打印统计 + 写 /mnt/d/vlm-active/results/nan_analysis.json
+输入：/home/lawson/vlm-active/results/nan_frames.json（扫描产物）
+输出：打印统计 + 写 /home/lawson/vlm-active/results/nan_analysis.json
 """
 import json
 import re
 from collections import Counter, defaultdict
 
-bad = json.load(open("/mnt/d/vlm-active/results/nan_frames.json"))
+bad = json.load(open("/home/lawson/vlm-active/results/nan_frames.json"))
 bad_set = {b["frame"] for b in bad}
 
 # 来源分类：按文件名前缀
@@ -26,7 +26,7 @@ def source(fn):
     return "其他"
 
 import glob
-all_frames = [p.split("/")[-1] for p in glob.glob("/mnt/d/vlm-active/frames/trafficqa/*.jpg")]
+all_frames = [p.split("/")[-1] for p in glob.glob("/home/lawson/vlm-active/frames/trafficqa/*.jpg")]
 
 stat = defaultdict(lambda: Counter())
 for fn in all_frames:
@@ -42,7 +42,7 @@ for s, c in stat.items():
 # 和标注的交叉：NaN 帧里 push/ride 各多少
 try:
     anns = {json.loads(l)["frame_id"]: json.loads(l)["label"]
-            for l in open("/mnt/d/vlm-active/frames/trafficqa/annotations.jsonl")}
+            for l in open("/home/lawson/vlm-active/frames/trafficqa/annotations.jsonl")}
     cross = Counter()
     for fn in bad_set:
         lab = anns.get(fn[:-4], "未标注")
@@ -60,6 +60,6 @@ except FileNotFoundError:
 
 json.dump({"by_source": {s: dict(c) for s, c in stat.items()},
            "bad_by_label": dict(cross)},
-          open("/mnt/d/vlm-active/results/nan_analysis.json", "w"),
+          open("/home/lawson/vlm-active/results/nan_analysis.json", "w"),
           ensure_ascii=False, indent=1)
-print("\n-> /mnt/d/vlm-active/results/nan_analysis.json")
+print("\n-> /home/lawson/vlm-active/results/nan_analysis.json")

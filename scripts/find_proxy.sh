@@ -6,4 +6,4 @@ for p in 7890 7897 1080 8889 10808 10809; do
   echo "$GW:$p -> $code"
 done
 echo --- gh_login2 log:
-cat /root/gh_login2.log
+cat /home/lawson/vlm-active/logs/gh_login2.log

@@ -7,9 +7,9 @@ import torch
 from peft import LoraConfig, PeftModel
 from safetensors.torch import load_file, save_file
 
-CKPT = "/mnt/d/vlm-active/ckpt/e2_7b/checkpoint-10"
-BASE = "/mnt/d/vlm-active/models/Qwen2.5-VL-7B-Instruct"
-OUT = "/mnt/d/vlm-active/ckpt/e2_7b/final"
+CKPT = "/home/lawson/vlm-active/ckpt/e2_7b/checkpoint-10"
+BASE = "/home/lawson/vlm-active/models/Qwen2.5-VL-7B-Instruct"
+OUT = "/home/lawson/vlm-active/ckpt/e2_7b/final"
 
 from transformers import AutoModelForImageTextToText
 model = AutoModelForImageTextToText.from_pretrained(BASE, dtype=torch.float16)

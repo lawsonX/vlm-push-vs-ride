@@ -6,9 +6,9 @@ import shutil
 from safetensors import safe_open
 from safetensors.torch import save_file
 
-CKPT = "/mnt/d/vlm-active/ckpt/e4b_clean/checkpoint-12"
-BASE = "/mnt/d/vlm-active/models/Qwen2.5-VL-3B-Instruct"
-OUT = "/mnt/d/vlm-active/ckpt/e4b_clean/final"
+CKPT = "/home/lawson/vlm-active/ckpt/e4b_clean/checkpoint-12"
+BASE = "/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct"
+OUT = "/home/lawson/vlm-active/ckpt/e4b_clean/final"
 
 tensors = {}
 with safe_open(os.path.join(CKPT, "model.safetensors"), framework="pt") as f:

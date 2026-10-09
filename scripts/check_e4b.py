@@ -4,8 +4,8 @@ import torch
 from transformers import AutoModelForImageTextToText, AutoProcessor
 from PIL import Image
 
-CKPT = "/mnt/d/vlm-active/ckpt/e4b_projector/final"
-IMG = "/mnt/d/vlm-active/frames/trafficqa/sg_02_000.jpg"
+CKPT = "/home/lawson/vlm-active/ckpt/e4b_projector/final"
+IMG = "/home/lawson/vlm-active/frames/trafficqa/sg_02_000.jpg"
 Q = "图中这个人是在推行还是骑行这辆车？"
 
 processor = AutoProcessor.from_pretrained(CKPT)

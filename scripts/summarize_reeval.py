@@ -6,7 +6,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 rows = []
-for f in sorted(glob.glob("/mnt/d/vlm-active/results/local2_*.jsonl")):
+for f in sorted(glob.glob("/home/lawson/vlm-active/results/local2_*.jsonl")):
     tag = Path(f).stem.replace("local2_", "")
     stat = defaultdict(Counter)
     for l in open(f, encoding="utf-8"):

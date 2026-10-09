@@ -2,7 +2,7 @@
 """搜狗图片搜索抓图（直链在 oriPicUrl 字段里，126 代理的要解出原始 URL）。
 
 用法：
-    python fetch_sogou.py --out /mnt/d/vlm-active/frames/web_sogou \
+    python fetch_sogou.py --out /home/lawson/vlm-active/frames/web_sogou \
         --queries "电瓶车 推行 监控" "推电动车进电梯 监控" --per-query 20
 """
 

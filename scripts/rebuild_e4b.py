@@ -13,9 +13,9 @@ from safetensors import safe_open
 from safetensors.torch import save_file
 import torch
 
-CKPT20 = "/mnt/d/vlm-active/ckpt/e4b_projector/checkpoint-20"
-BASE = "/mnt/d/vlm-active/models/Qwen2.5-VL-3B-Instruct"
-OUT = "/mnt/d/vlm-active/ckpt/e4b_projector/final2"
+CKPT20 = "/home/lawson/vlm-active/ckpt/e4b_projector/checkpoint-20"
+BASE = "/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct"
+OUT = "/home/lawson/vlm-active/ckpt/e4b_projector/final2"
 
 os.makedirs(OUT, exist_ok=True)
 

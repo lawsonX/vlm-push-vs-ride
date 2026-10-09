@@ -1,8 +1,8 @@
 #!/bin/bash
 # 并发下载 TrafficQA 视频。可重复运行，已存在的文件会跳过（大小校验）。
-LIST="${TQA_LIST:-/mnt/e/vlm-data/raw/_meta/tqa_list.txt}"
+LIST="${TQA_LIST:-/home/lawson/vlm-data/raw/_meta/tqa_list.txt}"
 BASE="https://hf-mirror.com/datasets/fcxfcx/TrafficQA/resolve/main"
-DEST="${TQA_DEST:-/mnt/e/vlm-data/raw/TrafficQA}"
+DEST="${TQA_DEST:-/home/lawson/vlm-data/raw/TrafficQA}"
 
 download_one() {
     f="$1"

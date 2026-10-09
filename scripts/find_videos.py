@@ -4,7 +4,7 @@ import re
 import requests
 
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126.0"}
-urls = [l.strip() for l in open("/root/news_urls.txt", encoding="utf-8") if l.strip()]
+urls = [l.strip() for l in open("/home/lawson/vlm-data/raw/_meta/news_urls.txt", encoding="utf-8") if l.strip()]
 found = []
 for u in urls:
     try:
@@ -20,4 +20,4 @@ for u in urls:
             print("   ", v[:130])
         found += sorted(vids)
 print("总数:", len(found))
-open("/root/news_videos.txt", "w").write("\n".join(found))
+open("/home/lawson/vlm-data/raw/_meta/news_videos.txt", "w").write("\n".join(found))

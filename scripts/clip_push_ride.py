@@ -10,9 +10,9 @@
 对 3 组文本描述打分（推行 vs 骑行），记录分数和胜负。
 
 用法：
-    python clip_push_ride.py --pool /mnt/d/vlm-active/frames/trafficqa/pool_manifest.jsonl \
-        --frames-dir /mnt/d/vlm-active/frames/trafficqa \
-        --out /mnt/d/vlm-active/results/clip_scores.jsonl
+    python clip_push_ride.py --pool /home/lawson/vlm-active/frames/trafficqa/pool_manifest.jsonl \
+        --frames-dir /home/lawson/vlm-active/frames/trafficqa \
+        --out /home/lawson/vlm-active/results/clip_scores.jsonl
 """
 
 import argparse

@@ -8,7 +8,7 @@ YOLO 检测器（CPU 能跑）先找画面里的 人 / 自行车 / 摩托车，
 合格的写进 pool_manifest.jsonl，标注页面只加载这份清单。
 
 用法：
-    python filter_bike_frames.py --frames-dir /mnt/d/vlm-active/frames/trafficqa \
+    python filter_bike_frames.py --frames-dir /home/lawson/vlm-active/frames/trafficqa \
         --weights /tmp/yolov8n.pt
 """
 

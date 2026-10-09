@@ -5,10 +5,10 @@ import torch
 from transformers import AutoModelForImageTextToText, AutoProcessor
 from PIL import Image
 
-FIXED = "/mnt/d/vlm-active/ckpt/e2_q25vl_v1/final_fixed2"
-BASE = "/mnt/e/vlm-data/models/Qwen2.5-VL-3B-Instruct"
-IMG_BAD = "/mnt/d/vlm-active/frames/trafficqa/sg_03_016.jpg"
-IMG_OK = "/mnt/d/vlm-active/frames/trafficqa/sg_02_019.jpg"
+FIXED = "/home/lawson/vlm-active/ckpt/e2_q25vl_v1/final_fixed2"
+BASE = "/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct"
+IMG_BAD = "/home/lawson/vlm-active/frames/trafficqa/sg_03_016.jpg"
+IMG_OK = "/home/lawson/vlm-active/frames/trafficqa/sg_02_019.jpg"
 Q = "图中这个人是在推行还是骑行这辆车？"
 
 def probe(model_path, img_path, tag):
@@ -32,7 +32,7 @@ import sys, glob
 
 probe(FIXED, IMG_BAD, "fixed2 + 坏图  ")
 probe(FIXED, IMG_OK, "fixed2 + 好图  ")
-base = "/mnt/e/vlm-data/models/Qwen2.5-VL-3B-Instruct"
+base = "/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct"
 if True:
     probe(base, IMG_BAD, "基座 + 坏图  ")
     probe(base, IMG_OK, "基座 + 好图  ")

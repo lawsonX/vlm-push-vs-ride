@@ -4,7 +4,7 @@
 几何启发式的「ride 端」常把站车旁的人误判为骑行（natr_0020 即此）。
 用云端模型把 60 对预筛成高置信子集，lawson 终审。
 
-输出：/mnt/d/vlm-active/frames/natr2/pairs_screened.jsonl
+输出：/home/lawson/vlm-active/frames/natr2/pairs_screened.jsonl
 """
 import base64
 import json
@@ -16,7 +16,7 @@ from openai import OpenAI
 
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 Q = "图中这个人是在推行还是骑行这辆车？只回答「推行」或「骑行」。"
-DIR = Path("/mnt/d/vlm-active/frames/natr2")
+DIR = Path("/home/lawson/vlm-active/frames/natr2")
 OUT = DIR / "pairs_screened.jsonl"
 
 
@@ -29,7 +29,7 @@ def parse_label(text):
 
 
 def main():
-    key = Path("/root/vlm-lab/api_testing/api_key.txt").read_text().strip()
+    key = Path(__file__).parent / "api_key.txt".read_text().strip()
     client = OpenAI(api_key=key, base_url=BASE_URL)
 
     pairs = [json.loads(l) for l in open(DIR / "pairs_transition2.jsonl")]

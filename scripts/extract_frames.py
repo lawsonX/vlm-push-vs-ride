@@ -11,8 +11,8 @@
 为什么不直接用 ffmpeg 一把梭：后续要在清单里记时间戳和哈希，自己写更可控，也方便后面按格子筛选时追溯来源。
 
 用法：
-    python extract_frames.py --src /mnt/e/vlm-data/raw/TrafficQA/videos \
-        --out /mnt/d/vlm-active/frames/trafficqa --max-per-video 3
+    python extract_frames.py --src /home/lawson/vlm-data/raw/TrafficQA/videos \
+        --out /home/lawson/vlm-active/frames/trafficqa --max-per-video 3
 """
 
 import argparse

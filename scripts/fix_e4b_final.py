@@ -13,7 +13,7 @@ for pid in os.listdir("/proc"):
         pass
 
 # 2. 把写好的 tmp safetensors 转正
-final = "/mnt/d/vlm-active/ckpt/e4b_projector/final"
+final = "/home/lawson/vlm-active/ckpt/e4b_projector/final"
 tmps = [f for f in os.listdir(final) if f.startswith(".tmp")]
 if tmps:
     src = os.path.join(final, tmps[0])
@@ -26,7 +26,7 @@ if tmps:
         print("removed duplicate tmp")
 
 # 3. 补齐 tokenizer / preprocessor 文件（从基座复制）
-base = "/mnt/d/vlm-active/models/Qwen2.5-VL-3B-Instruct"
+base = "/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct"
 for fn in ["tokenizer.json", "tokenizer_config.json", "vocab.json", "merges.txt",
            "preprocessor_config.json", "chat_template.json"]:
     s = os.path.join(base, fn)

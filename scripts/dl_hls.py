@@ -7,8 +7,8 @@ import requests
 
 UA = {"User-Agent": "Mozilla/5.0", "Referer": "https://www.163.com/"}
 
-url = [l.strip() for l in open("/root/news_videos.txt") if l.strip()][0]
-out = "/mnt/e/vlm-data/raw/news_videos/elevator_push.ts"
+url = [l.strip() for l in open("/home/lawson/vlm-data/raw/_meta/news_videos.txt") if l.strip()][0]
+out = "/home/lawson/vlm-data/raw/news_videos/elevator_push.ts"
 
 r = requests.get(url, headers=UA, timeout=30)
 r.raise_for_status()

@@ -5,8 +5,8 @@
 把「疑似推行」的帧排到标注 UI 最前面，lawson 的标注产出率能翻几倍。
 
 输出：
-- /mnt/d/vlm-active/results/prescreen.jsonl   每帧一行（可断点续跑）
-- /mnt/d/vlm-active/frames/trafficqa/pool_ranked.jsonl  重排后的标注池（疑似推行在前）
+- /home/lawson/vlm-active/results/prescreen.jsonl   每帧一行（可断点续跑）
+- /home/lawson/vlm-active/frames/trafficqa/pool_ranked.jsonl  重排后的标注池（疑似推行在前）
 
 用法：python screen_push.py [--limit N] [--workers 6]
 """
@@ -21,11 +21,11 @@ from openai import OpenAI
 
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 Q = "图中这个人是在推行还是骑行这辆车？只回答「推行」或「骑行」。"
-POOL = "/mnt/d/vlm-active/frames/trafficqa/pool_dedup.jsonl"
-ANN = "/mnt/d/vlm-active/frames/trafficqa/annotations.jsonl"
-FRAMES = "/mnt/d/vlm-active/frames/trafficqa"
-OUT = "/mnt/d/vlm-active/results/prescreen.jsonl"
-RANKED = "/mnt/d/vlm-active/frames/trafficqa/pool_ranked.jsonl"
+POOL = "/home/lawson/vlm-active/frames/trafficqa/pool_dedup.jsonl"
+ANN = "/home/lawson/vlm-active/frames/trafficqa/annotations.jsonl"
+FRAMES = "/home/lawson/vlm-active/frames/trafficqa"
+OUT = "/home/lawson/vlm-active/results/prescreen.jsonl"
+RANKED = "/home/lawson/vlm-active/frames/trafficqa/pool_ranked.jsonl"
 
 
 def parse_label(text):
@@ -42,7 +42,7 @@ def main():
     ap.add_argument("--workers", type=int, default=6)
     args = ap.parse_args()
 
-    key = Path("/root/vlm-lab/api_testing/api_key.txt").read_text().strip()
+    key = Path(__file__).parent / "api_key.txt".read_text().strip()
     client = OpenAI(api_key=key, base_url=BASE_URL)
 
     pool = [json.loads(l) for l in open(POOL)]

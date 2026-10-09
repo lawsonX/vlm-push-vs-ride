@@ -13,8 +13,8 @@ import torch
 from transformers import AutoModelForImageTextToText, AutoProcessor
 from PIL import Image
 
-MODEL = "/mnt/d/vlm-active/models/Qwen2.5-VL-3B-Instruct"
-FRAMES = "/mnt/d/vlm-active/frames/trafficqa"
+MODEL = "/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct"
+FRAMES = "/home/lawson/vlm-active/frames/trafficqa"
 Q = "图中这个人是在推行还是骑行这辆车？"
 
 device = "cuda"
@@ -86,6 +86,6 @@ for i in range(1, len(files) + 1):
     elif i % 200 == 0:
         print(f"{i}/{len(files)} ok", flush=True)
 
-with open(f"/mnt/d/vlm-active/results/nan_frames_tail.json", "w", encoding="utf-8") as f:
+with open(f"/home/lawson/vlm-active/results/nan_frames_tail.json", "w", encoding="utf-8") as f:
     json.dump(bad, f, ensure_ascii=False, indent=1)
 print(f"done. total={len(files)} bad={len(bad)} (offset {start_idx})", flush=True)

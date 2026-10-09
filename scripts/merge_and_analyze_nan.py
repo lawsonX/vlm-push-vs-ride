@@ -5,22 +5,22 @@ import re
 
 # 1. 从主日志提取 BAD 帧（顺序扫描，覆盖 0~10169）
 bad = {}
-for line in open("/root/scan_nan4.log", encoding="utf-8", errors="replace"):
+for line in open("/home/lawson/vlm-active/logs/scan_nan4.log", encoding="utf-8", errors="replace"):
     m = re.search(r"\[BAD \d+/\d+\] (\S+) nan_frac=([\d.]+)", line)
     if m:
         bad[m.group(1)] = {"frame": m.group(1), "nan_frac": float(m.group(2))}
 print(f"主日志 BAD: {len(bad)}")
 
 # 2. 尾部续扫结果
-tail = json.load(open("/mnt/d/vlm-active/results/nan_frames_tail.json"))
+tail = json.load(open("/home/lawson/vlm-active/results/nan_frames_tail.json"))
 for b in tail:
     bad[b["frame"]] = b
 print(f"合并后 BAD: {len(bad)}")
 
 out = sorted(bad.values(), key=lambda x: x["frame"])
-json.dump(out, open("/mnt/d/vlm-active/results/nan_frames.json", "w"),
+json.dump(out, open("/home/lawson/vlm-active/results/nan_frames.json", "w"),
           ensure_ascii=False, indent=1)
-print("-> /mnt/d/vlm-active/results/nan_frames.json")
+print("-> /home/lawson/vlm-active/results/nan_frames.json")
 
 # 3. 分布分析
 import glob
@@ -39,7 +39,7 @@ def source(fn):
         return "c_来源(影视?)"
     return "其他"
 
-all_frames = [p.split("/")[-1] for p in glob.glob("/mnt/d/vlm-active/frames/trafficqa/*.jpg")]
+all_frames = [p.split("/")[-1] for p in glob.glob("/home/lawson/vlm-active/frames/trafficqa/*.jpg")]
 stat = defaultdict(Counter)
 for fn in all_frames:
     stat[source(fn)]["total"] += 1
@@ -53,7 +53,7 @@ for s, c in sorted(stat.items(), key=lambda kv: -kv[1]["nan"] / max(kv[1]["total
 
 anns = {}
 try:
-    for l in open("/mnt/d/vlm-active/frames/trafficqa/annotations.jsonl"):
+    for l in open("/home/lawson/vlm-active/frames/trafficqa/annotations.jsonl"):
         a = json.loads(l)
         if a.get("label") in ("push", "ride"):
             anns[a["frame_id"]] = a["label"]
@@ -71,6 +71,6 @@ for lab, n in all_lab.most_common():
 
 json.dump({"by_source": {s: dict(c) for s, c in stat.items()},
            "bad_by_label": dict(cross)},
-          open("/mnt/d/vlm-active/results/nan_analysis.json", "w"),
+          open("/home/lawson/vlm-active/results/nan_analysis.json", "w"),
           ensure_ascii=False, indent=1)
-print("-> /mnt/d/vlm-active/results/nan_analysis.json")
+print("-> /home/lawson/vlm-active/results/nan_analysis.json")

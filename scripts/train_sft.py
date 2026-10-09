@@ -14,9 +14,9 @@
 - 只算答案部分的 loss（prompt 部分 mask 掉），避免学废话
 
 用法（等 GPU 空闲后）：
-    python train_sft.py --model /mnt/e/vlm-data/models/Qwen3.5-0.8B \
-        --data /mnt/d/vlm-active/sft/train_direct.jsonl --mode llm_lora \
-        --out /mnt/d/vlm-active/ckpt/e2_llm_lora
+    python train_sft.py --model /home/lawson/vlm-active/models/Qwen3.5-0.8B \
+        --data /home/lawson/vlm-active/sft/train_direct.jsonl --mode llm_lora \
+        --out /home/lawson/vlm-active/ckpt/e2_llm_lora
 """
 
 import argparse

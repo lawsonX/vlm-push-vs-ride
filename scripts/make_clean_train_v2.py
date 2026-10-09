@@ -4,15 +4,15 @@
 与 make_clean_train.py 的区别：把测试集外新标注的「推行」帧纳入训练
 （这是标注的目的），骑行帧从测试集外的非 NaN 池中配平。
 
-输出：/mnt/d/vlm-active/sft/train_clean_v2.jsonl
+输出：/home/lawson/vlm-active/sft/train_clean_v2.jsonl
 """
 import json
 import random
 
-ANN = "/mnt/d/vlm-active/frames/trafficqa/annotations.jsonl"
+ANN = "/home/lawson/vlm-active/frames/trafficqa/annotations.jsonl"
 TEST = "/tmp/test_balanced.jsonl"
-NAN = "/mnt/d/vlm-active/results/nan_frames.json"
-OUT = "/mnt/d/vlm-active/sft/train_clean_v2.jsonl"
+NAN = "/home/lawson/vlm-active/results/nan_frames.json"
+OUT = "/home/lawson/vlm-active/sft/train_clean_v2.jsonl"
 Q = "图中这个人是在推行还是骑行这辆车？"
 
 ann = [json.loads(l) for l in open(ANN)]
@@ -36,7 +36,7 @@ with open(OUT, "w", encoding="utf-8") as f:
     for a in sel:
         rec = {
             "frame_id": a["frame_id"],
-            "image": "/mnt/d/vlm-active/frames/trafficqa/" + a["frame_id"] + ".jpg",
+            "image": "/home/lawson/vlm-active/frames/trafficqa/" + a["frame_id"] + ".jpg",
             "question": Q,
             "answer": "推行" if a["label"] == "push" else "骑行",
         }

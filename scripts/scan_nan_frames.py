@@ -8,8 +8,8 @@ import torch
 from transformers import AutoModelForImageTextToText, AutoProcessor
 from PIL import Image
 
-MODEL = sys.argv[1] if len(sys.argv) > 1 else "/mnt/e/vlm-data/models/Qwen2.5-VL-3B-Instruct"
-FRAMES = "/mnt/d/vlm-active/frames/trafficqa"
+MODEL = sys.argv[1] if len(sys.argv) > 1 else "/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct"
+FRAMES = "/home/lawson/vlm-active/frames/trafficqa"
 Q = "图中这个人是在推行还是骑行这辆车？"
 
 device = "cuda"
@@ -36,6 +36,6 @@ for i, p in enumerate(files, 1):
     elif i % 50 == 0:
         print(f"{i}/{len(files)} ok", flush=True)
 
-with open("/mnt/d/vlm-active/results/nan_frames.json", "w", encoding="utf-8") as f:
+with open("/home/lawson/vlm-active/results/nan_frames.json", "w", encoding="utf-8") as f:
     json.dump(bad, f, ensure_ascii=False, indent=1)
-print(f"done. total={len(files)} bad={len(bad)} -> /mnt/d/vlm-active/results/nan_frames.json")
+print(f"done. total={len(files)} bad={len(bad)} -> /home/lawson/vlm-active/results/nan_frames.json")

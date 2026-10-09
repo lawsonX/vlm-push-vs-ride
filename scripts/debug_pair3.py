@@ -5,8 +5,8 @@ import torch
 from transformers import AutoModelForImageTextToText, AutoProcessor
 from PIL import Image
 
-MODEL = "/mnt/d/vlm-active/ckpt/e2_q25vl_v1/final_fixed2"
-PAIR = json.loads(open("/mnt/d/vlm-active/sft/dpo_pairs_v2.jsonl", encoding="utf-8").readlines()[2])
+MODEL = "/home/lawson/vlm-active/ckpt/e2_q25vl_v1/final_fixed2"
+PAIR = json.loads(open("/home/lawson/vlm-active/sft/dpo_pairs_v2.jsonl", encoding="utf-8").readlines()[2])
 
 device = "cuda"
 processor = AutoProcessor.from_pretrained(MODEL)

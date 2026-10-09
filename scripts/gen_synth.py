@@ -9,7 +9,7 @@
 生成后同样过 YOLO 预筛确认人+车同框，再进标注池由人工最终确认。
 
 用法：
-    python gen_synth.py --out /mnt/d/vlm-active/frames/synth --n-push 100 --n-ride 50
+    python gen_synth.py --out /home/lawson/vlm-active/frames/synth --n-push 100 --n-ride 50
 """
 
 import argparse
@@ -20,7 +20,7 @@ from pathlib import Path
 
 import requests
 
-KEY = Path(__file__).parent.parent.joinpath("api_testing/api_key.txt").read_text().strip()
+KEY = Path(__file__).parent / "api_key.txt".read_text().strip()
 SUBMIT = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text2image/image-synthesis"
 TASK = "https://dashscope.aliyuncs.com/api/v1/tasks/"
 HEADERS = {"Authorization": f"Bearer {KEY}", "Content-Type": "application/json"}

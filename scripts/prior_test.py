@@ -7,7 +7,7 @@
 做法：同一道纯文本问题，每个模型采样 10 次（temperature 调高一点看分布），统计答案。
 
 用法：
-    python prior_test.py --models qwen3-vl-flash,qwen-vl-max --out /mnt/d/vlm-active/results/prior.jsonl
+    python prior_test.py --models qwen3-vl-flash,qwen-vl-max --out /home/lawson/vlm-active/results/prior.jsonl
 """
 
 import argparse

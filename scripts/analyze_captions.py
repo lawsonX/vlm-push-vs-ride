@@ -8,7 +8,7 @@
 3. 输出数量和占比 + 每类随机样例，人工复核数得对不对
 
 用法：
-    python analyze_captions.py --json /mnt/e/vlm-data/raw/LLaVA/blip_laion_cc_sbu_558k.json
+    python analyze_captions.py --json /home/lawson/vlm-data/raw/LLaVA/blip_laion_cc_sbu_558k.json
 """
 
 import argparse

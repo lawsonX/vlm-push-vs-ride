@@ -4,7 +4,7 @@
 flash 单模型假推行率 74%（它在这池子上过度报推行）；omni-flash 偏置方向
 不同，两模型一致的「推行」可信度高得多。
 
-输出：/mnt/d/vlm-active/results/prescreen2.jsonl，并重排 pool_ranked.jsonl
+输出：/home/lawson/vlm-active/results/prescreen2.jsonl，并重排 pool_ranked.jsonl
 （两道都判推行 > 仅 flash > 其他）。
 """
 import base64
@@ -17,12 +17,12 @@ from openai import OpenAI
 
 BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 Q = "图中这个人是在推行还是骑行这辆车？只回答「推行」或「骑行」。"
-FRAMES = "/mnt/d/vlm-active/frames/trafficqa"
-ANN = "/mnt/d/vlm-active/frames/trafficqa/annotations.jsonl"
-POOL = "/mnt/d/vlm-active/frames/trafficqa/pool_dedup.jsonl"
-OUT1 = "/mnt/d/vlm-active/results/prescreen.jsonl"
-OUT2 = "/mnt/d/vlm-active/results/prescreen2.jsonl"
-RANKED = "/mnt/d/vlm-active/frames/trafficqa/pool_ranked.jsonl"
+FRAMES = "/home/lawson/vlm-active/frames/trafficqa"
+ANN = "/home/lawson/vlm-active/frames/trafficqa/annotations.jsonl"
+POOL = "/home/lawson/vlm-active/frames/trafficqa/pool_dedup.jsonl"
+OUT1 = "/home/lawson/vlm-active/results/prescreen.jsonl"
+OUT2 = "/home/lawson/vlm-active/results/prescreen2.jsonl"
+RANKED = "/home/lawson/vlm-active/frames/trafficqa/pool_ranked.jsonl"
 
 
 def parse_label(text):
@@ -34,7 +34,7 @@ def parse_label(text):
 
 
 def main():
-    key = Path("/root/vlm-lab/api_testing/api_key.txt").read_text().strip()
+    key = Path(__file__).parent / "api_key.txt".read_text().strip()
     client = OpenAI(api_key=key, base_url=BASE_URL)
 
     r1 = {json.loads(l)["frame_id"]: json.loads(l) for l in open(OUT1)}

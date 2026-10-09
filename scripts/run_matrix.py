@@ -9,10 +9,10 @@
 结果写 jsonl：每张图每个模型每种问法一行，含原始回答、解析出的标签、耗时、token 数。
 
 用法：
-    python run_matrix.py --pool /mnt/d/vlm-active/frames/trafficqa/pool_manifest.jsonl \
-        --frames-dir /mnt/d/vlm-active/frames/trafficqa \
+    python run_matrix.py --pool /home/lawson/vlm-active/frames/trafficqa/pool_manifest.jsonl \
+        --frames-dir /home/lawson/vlm-active/frames/trafficqa \
         --models qwen3-vl-flash,qwen3-vl-plus --styles direct,describe,guide \
-        --out /mnt/d/vlm-active/results/pilot.jsonl --limit 10
+        --out /home/lawson/vlm-active/results/pilot.jsonl --limit 10
 """
 
 import argparse

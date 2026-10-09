@@ -1,8 +1,8 @@
 #!/bin/bash
 # 总下载器：依次下 TrafficQA -> BDD100K -> Cityscapes，循环补漏直到下完。
-# 每阶段把进度写进 /mnt/e/vlm-data/raw/_meta/download_status.txt，方便随时查看。
-META=/mnt/e/vlm-data/raw/_meta
-RAW=/mnt/e/vlm-data/raw
+# 每阶段把进度写进 /home/lawson/vlm-data/raw/_meta/download_status.txt，方便随时查看。
+META=/home/lawson/vlm-data/raw/_meta
+RAW=/home/lawson/vlm-data/raw
 LOG=~/download_master.log
 
 dl_list() {  # $1=列表文件 $2=目标根目录 $3=基础URL $4=阶段名

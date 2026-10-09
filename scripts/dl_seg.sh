@@ -8,5 +8,5 @@ for i in $(seq 1 100); do
         && break
     sleep 3
 done
-ls -la /tmp/yolov8n-seg.pt >> /root/segdl.log 2>&1
-echo DOWNLOAD_FINISHED >> /root/segdl.log
+ls -la /tmp/yolov8n-seg.pt >> /home/lawson/vlm-active/logs/segdl.log 2>&1
+echo DOWNLOAD_FINISHED >> /home/lawson/vlm-active/logs/segdl.log
