@@ -2,6 +2,7 @@
 
 > 写给接手本项目的 agent。原设备（Windows + WSL + 单卡 2080 Ti）因 GPU 驱动频繁崩溃退役。
 > 本文件是唯一权威交接文档；docs/ 系列是过程记录，09 是主报告。
+> 仓库地址：https://github.com/lawsonX/vlm-push-vs-ride （新设备直接 git clone 即可拿到代码与核心数据）
 
 ## 0. 一句话现状
 
