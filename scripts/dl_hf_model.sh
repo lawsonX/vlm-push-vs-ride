@@ -9,7 +9,7 @@ API="https://hf-mirror.com/api/models/$REPO"
 mkdir -p "$DEST"
 
 for i in 1 2 3 4 5 6 7 8; do
-    curl -sS -m 600 --retry 3 --retry-all-errors "$API" -o "$DEST/.repo.json" && break
+    curl -sS -m 600 --retry 3 "$API" -o "$DEST/.repo.json" && break
     echo "$(date +%H:%M:%S) api fetch retry $i" >> "$DEST/.dl.log"
     sleep 5
 done
@@ -30,7 +30,7 @@ cat "$DEST/.files.txt" | xargs -P 4 -I{} bash -c '
     if [ -f "$out" ] && [ "$(stat -c%s "$out" 2>/dev/null || echo 0)" -gt 100 ]; then
         head -c 200 "$out" | grep -qi "redirect\|<html" || exit 0
     fi
-    curl -sSL --retry 8 --retry-all-errors -C - --create-dirs -m 3600 -o "$out" "'"$BASE"'/$f" 2>>"'"$DEST"'/.dl.log"
+    curl -sSL --retry 8 -C - --create-dirs -m 3600 -o "$out" "'"$BASE"'/$f" 2>>"'"$DEST"'/.dl.log"
     head -c 200 "$out" 2>/dev/null | grep -qi "redirect\|<html" && rm -f "$out"
 '
 echo "$(date +%H:%M:%S) $REPO done" >> "$DEST/.dl.log"

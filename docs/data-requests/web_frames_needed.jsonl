@@ -1,0 +1,250 @@
+{"frame_id": "c_movi7916_19_f000", "used_in": ["pools"]}
+{"frame_id": "c_movi7916_19_f001", "used_in": ["pools"]}
+{"frame_id": "c_movi7922_21_f001", "used_in": ["pools"]}
+{"frame_id": "c_movi7923_1_f000", "used_in": ["pools"]}
+{"frame_id": "c_movi7924_25_f002", "used_in": ["pools"]}
+{"frame_id": "c_movi7926_11_f001", "used_in": ["pools"]}
+{"frame_id": "c_movi7926_11_f002", "used_in": ["pools"]}
+{"frame_id": "c_movi7952_14_f000", "used_in": ["pools"]}
+{"frame_id": "c_movi7952_14_f001", "used_in": ["pools"]}
+{"frame_id": "c_movi7952_19_f001", "used_in": ["pools"]}
+{"frame_id": "c_movi7952_20_f002", "used_in": ["pools"]}
+{"frame_id": "c_sunp1648_19_f000", "used_in": ["pools"]}
+{"frame_id": "c_sunp1648_19_f002", "used_in": ["pools"]}
+{"frame_id": "c_sunp1650_15_f000", "used_in": ["pools"]}
+{"frame_id": "c_sunp1693_13_f000", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "c_sunp1693_15_f000", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "c_sunp1693_15_f002", "used_in": ["pools"]}
+{"frame_id": "j_2939_f000", "used_in": ["pools"]}
+{"frame_id": "j_2939_f002", "used_in": ["pools"]}
+{"frame_id": "j_2941_f000", "used_in": ["pools"]}
+{"frame_id": "j_2944_f000", "used_in": ["pools"]}
+{"frame_id": "j_2954_f000", "used_in": ["pools"]}
+{"frame_id": "j_2960_f000", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "j_2960_f001", "used_in": ["pools"]}
+{"frame_id": "j_2969_f002", "used_in": ["pools"]}
+{"frame_id": "j_3607_f000", "used_in": ["pools"]}
+{"frame_id": "j_3607_f002", "used_in": ["pools"]}
+{"frame_id": "j_3608_f000", "used_in": ["pools"]}
+{"frame_id": "j_3608_f002", "used_in": ["pools"]}
+{"frame_id": "j_3609_f000", "used_in": ["pools"]}
+{"frame_id": "j_3609_f002", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "j_3611_f000", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "j_3611_f001", "used_in": ["pools"]}
+{"frame_id": "j_3616_f000", "used_in": ["pools"]}
+{"frame_id": "j_3616_f001", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "j_3616_f002", "used_in": ["pools"]}
+{"frame_id": "j_3644_f001", "used_in": ["pools"]}
+{"frame_id": "j_3644_f002", "used_in": ["pools"]}
+{"frame_id": "j_3668_f000", "used_in": ["pools"]}
+{"frame_id": "j_3677_f000", "used_in": ["pools"]}
+{"frame_id": "j_3677_f001", "used_in": ["pools"]}
+{"frame_id": "j_3678_f001", "used_in": ["pools"]}
+{"frame_id": "j_3678_f002", "used_in": ["pools"]}
+{"frame_id": "j_3696_f001", "used_in": ["pools"]}
+{"frame_id": "j_3709_f000", "used_in": ["pools"]}
+{"frame_id": "j_3713_f002", "used_in": ["pools"]}
+{"frame_id": "j_3715_f000", "used_in": ["pools"]}
+{"frame_id": "j_3715_f001", "used_in": ["pools"]}
+{"frame_id": "j_3723_f000", "used_in": ["pools"]}
+{"frame_id": "news_07_05", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_01_000", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_001", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_002", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_003", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_004", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_006", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_008", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_01_009", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_010", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_014", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_015", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_018", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_01_019", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_02_000", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_02_001", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_02_004", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_02_005", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_02_009", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_02_011", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_02_016", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_02_019", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_02_020", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_02_024", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_02_025", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_02_026", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_02_029", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_03_000", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_003", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_004", "used_in": ["pools"]}
+{"frame_id": "sg_03_008", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_011", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_012", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_013", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_015", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_016", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_03_017", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_020", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_022", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_024", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_025", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_026", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_027", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_028", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_03_029", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_000", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_04_001", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_04_002", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_003", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_004", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_005", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_006", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_007", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_008", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_009", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_010", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_011", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_012", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_013", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_014", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_015", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_04_016", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_017", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_04_018", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_019", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_020", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_021", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_022", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_024", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_04_025", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_026", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_027", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_028", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_04_029", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_000", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_001", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_002", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_003", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_004", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_006", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_007", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_008", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_009", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_010", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_011", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_012", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_014", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_016", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_017", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_018", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_05_019", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_020", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_022", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_023", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_024", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_025", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_026", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_05_029", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_001", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_002", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_003", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_004", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_005", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_007", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_008", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_009", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_010", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_011", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_06_012", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_014", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_06_015", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_016", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_017", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_018", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_019", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_06_020", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_021", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_024", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_06_026", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_07_000", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_07_001", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_07_004", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_07_005", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_07_006", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_07_007", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_07_009", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_07_010", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_07_013", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_07_014", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_07_015", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_07_016", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_07_017", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_07_018", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_07_019", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_07_022", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_07_029", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_000", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_001", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_002", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_003", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_005", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_006", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_010", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_011", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_013", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_08_014", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_015", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_017", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_019", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_020", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_021", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_023", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_025", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_026", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_08_027", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_000", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_001", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_09_004", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_005", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_006", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_09_007", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_009", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_010", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_013", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_09_014", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_015", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_016", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_017", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_018", "used_in": ["annotations.jsonl"]}
+{"frame_id": "sg_09_019", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_020", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_021", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_09_022", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_000", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_001", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_10_002", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_003", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_004", "used_in": ["annotations.jsonl", "test_balanced.jsonl"]}
+{"frame_id": "sg_10_005", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_10_006", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_007", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_10_008", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_10_009", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_010", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_10_011", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_012", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_013", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_014", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_015", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_016", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_10_018", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_019", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_020", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_023", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_024", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_025", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_026", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_027", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "sg_10_028", "used_in": ["annotations.jsonl", "test_balanced.jsonl", "pools"]}
+{"frame_id": "sg_10_029", "used_in": ["annotations.jsonl", "pools"]}
+{"frame_id": "y_GBAW2vhPk60_clip_10_f002", "used_in": ["pools"]}
