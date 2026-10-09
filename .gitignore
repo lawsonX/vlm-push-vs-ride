@@ -1,0 +1,26 @@
+# 密钥与凭据（绝不入库）
+reference/dashscope_api.txt
+**/api_key.txt
+**/*.key
+.env
+
+# 大文件：图像帧、模型、训练检查点（在新设备重新下载，见 HANDOVER.md）
+*.jpg
+*.jpeg
+*.png
+*.mp4
+*.safetensors
+*.bin
+*.pt
+*.pth
+ckpt/
+frames/
+models/
+
+# 运行垃圾
+__pycache__/
+*.pyc
+*.log
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db

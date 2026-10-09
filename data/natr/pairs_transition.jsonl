@@ -1,0 +1,10 @@
+{"pair_id": "natr_0000", "video": "BV14Qa76VEkd.f30102.mp4", "t_ride": 2.0, "t_push": 8.0, "ride_score": 0.96, "push_score": 2.6, "auto_label": true}
+{"pair_id": "natr_0001", "video": "BV14Qa76VEkd.f30102.mp4", "t_ride": 3.0, "t_push": 8.0, "ride_score": 1.32, "push_score": 2.6, "auto_label": true}
+{"pair_id": "natr_0002", "video": "BV1LR4y1j7tA.f30080.mp4", "t_ride": 4.0, "t_push": 5.0, "ride_score": 0.9, "push_score": 2.86, "auto_label": true}
+{"pair_id": "natr_0003", "video": "BV1LR4y1j7tA.f30080.mp4", "t_ride": 4.0, "t_push": 23.0, "ride_score": 0.9, "push_score": 2.88, "auto_label": true}
+{"pair_id": "natr_0004", "video": "BV1LR4y1j7tA.f30080.mp4", "t_ride": 8.0, "t_push": 5.0, "ride_score": 0.27, "push_score": 2.86, "auto_label": true}
+{"pair_id": "natr_0005", "video": "BV1LR4y1j7tA.f30080.mp4", "t_ride": 8.0, "t_push": 23.0, "ride_score": 0.27, "push_score": 2.88, "auto_label": true}
+{"pair_id": "natr_0006", "video": "BV1tt421P7ae.f100143.mp4", "t_ride": 9.0, "t_push": 5.0, "ride_score": 0.91, "push_score": 2.67, "auto_label": true}
+{"pair_id": "natr_0007", "video": "BV1tt421P7ae.f100143.mp4", "t_ride": 9.0, "t_push": 6.0, "ride_score": 0.91, "push_score": 3.52, "auto_label": true}
+{"pair_id": "natr_0008", "video": "BV1tt421P7ae.f100143.mp4", "t_ride": 11.0, "t_push": 5.0, "ride_score": 0.1, "push_score": 2.67, "auto_label": true}
+{"pair_id": "natr_0009", "video": "BV1tt421P7ae.f100143.mp4", "t_ride": 11.0, "t_push": 6.0, "ride_score": 0.1, "push_score": 3.52, "auto_label": true}
