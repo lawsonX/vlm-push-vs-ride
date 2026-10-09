@@ -3,7 +3,7 @@
 # 当前队列：E8 DPO（分钟级）→ 写标志文件通知后续 M5/E9。
 # 注意：只在本项目的 vlm-lab 环境跑，不碰邻居任何东西。
 
-PY=/home/lawson/miniforge3/envs/vlm-lab/bin/python
+PY=/hdd2/xiaolirui/conda_envs/vlm-lab/bin/python
 FREE_MB=5000   # 显存占用低于 5GB 视为空闲（2080Ti 共 22GB）
 LOG=/home/lawson/vlm-active/logs/gpu_queue.log
 

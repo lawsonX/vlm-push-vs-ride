@@ -1,6 +1,6 @@
 #!/bin/bash
 # 等 Qwen2.5-VL 训练结束后，自动依次跑基线/微调评测
-PY=/home/lawson/miniforge3/envs/vlm-lab/bin/python
+PY=/hdd2/xiaolirui/conda_envs/vlm-lab/bin/python
 while ps aux | grep -q "[t]rain_sft.py --model /home/lawson/vlm-active/models/Qwen2.5-VL"; do
     sleep 30
 done

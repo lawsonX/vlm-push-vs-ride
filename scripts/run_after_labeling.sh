@@ -2,7 +2,7 @@
 # lawson 标注完成后的一键复测流程（在 WSL 里跑）
 # 前置：annotations.jsonl 里测试集外已出现新的 push 标签
 set -e
-PY=/home/lawson/miniforge3/envs/vlm-lab/bin/python
+PY=/hdd2/xiaolirui/conda_envs/vlm-lab/bin/python
 CK=/home/lawson/vlm-active/ckpt
 RES=/home/lawson/vlm-active/results
 SFT=/home/lawson/vlm-active/sft

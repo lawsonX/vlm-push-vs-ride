@@ -1,6 +1,6 @@
 #!/bin/bash
 # 等 E7 训练结束后，自动评测（对比基线已有：push 50% / ride 75%）
-PY=/home/lawson/miniforge3/envs/vlm-lab/bin/python
+PY=/hdd2/xiaolirui/conda_envs/vlm-lab/bin/python
 while ps aux | grep -q "[t]rain_sft.py --model /home/lawson/vlm-active/models/Qwen2.5-VL.*e7_chain"; do
     sleep 30
 done

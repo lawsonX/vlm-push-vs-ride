@@ -1,6 +1,6 @@
 #!/bin/bash
 # E5 GPU 版：数据量/分布曲线的训练+评测全自动链
-PY=/home/lawson/miniforge3/envs/vlm-lab/bin/python
+PY=/hdd2/xiaolirui/conda_envs/vlm-lab/bin/python
 TRAIN=scripts/train_sft.py
 EVAL=scripts/eval_local.py
 BASE=/home/lawson/vlm-active/models/Qwen2.5-VL-3B-Instruct

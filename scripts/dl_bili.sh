@@ -7,7 +7,7 @@ while read -r bv; do
         echo "skip $bv (已存在)"
         continue
     fi
-    /home/lawson/miniforge3/envs/vlm-lab/bin/yt-dlp \
+    /hdd2/xiaolirui/conda_envs/vlm-lab/bin/yt-dlp \
         --cookies /home/lawson/vlm-data/bili_cookie_netscape.txt \
         -f "bv*[height<=480]+ba/b[height<=480]/worst" \
         --merge-output-format mp4 \

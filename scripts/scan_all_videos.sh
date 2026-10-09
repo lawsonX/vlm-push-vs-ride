@@ -3,7 +3,7 @@
 VIDS=$(ls /home/lawson/vlm-data/raw/bili_videos/*.mp4 | sed 's|.*/||')
 echo "扫描: $(echo $VIDS | wc -w) 个视频"
 mkdir -p /home/lawson/vlm-active/frames/natr2
-/home/lawson/miniforge3/envs/vlm-lab/bin/python -u scripts/scan_transitions.py \
+/hdd2/xiaolirui/conda_envs/vlm-lab/bin/python -u scripts/scan_transitions.py \
   --video-dir /home/lawson/vlm-data/raw/bili_videos \
   --videos $VIDS \
   --out-dir /home/lawson/vlm-active/frames/natr2 \

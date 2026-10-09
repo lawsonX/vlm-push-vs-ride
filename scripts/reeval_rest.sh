@@ -1,7 +1,7 @@
 #!/bin/bash
 # 批量重评（续）：跳过已完成的 base 和已确认损坏的 e2lora(final)
 set -x
-PY=/home/lawson/miniforge3/envs/vlm-lab/bin/python
+PY=/hdd2/xiaolirui/conda_envs/vlm-lab/bin/python
 EV=scripts/eval_local_nan.py
 ANN=/tmp/test_balanced.jsonl
 FR=/home/lawson/vlm-active/frames/trafficqa
