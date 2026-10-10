@@ -48,7 +48,7 @@ def parse_qc(text):
     q2 = grab(2)
     if "没有" in q2 or "无" in q2[:6]:
         twowheel = "no"
-    elif any(k in q2 for k in ("自行车", "电动车", "摩托车", "单车", "电瓶车", "有")):
+    elif q2.strip() in ("是", "有", "是的", "有。") or any(k in q2 for k in ("自行车", "电动车", "摩托车", "单车", "电瓶车", "有")):
         twowheel = "yes"
     else:
         twowheel = "unknown"
