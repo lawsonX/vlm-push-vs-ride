@@ -21,6 +21,7 @@ POOLS = [
     ("bili", "/mnt/e/vlm-data/items_bili"),
     ("bili3", "/mnt/e/vlm-data/items_bili3"),
     ("bili4", "/mnt/e/vlm-data/items_bili4"),
+    ("bili5", "/mnt/e/vlm-data/items_bili5"),
     ("visdrone", "/mnt/e/vlm-data/items_visdrone"),
 ]
 
@@ -81,6 +82,10 @@ def main():
                 continue
             if str(qc.get("twowheel", "")).lower() != "yes":
                 continue
+            if qc.get("view") and qc.get("view") != "surveillance":
+                continue
+            if qc.get("facing") == "back":
+                continue
             if qc.get("activity") not in ACT_OK:
                 continue
             if qc.get("clarity") == "low":
@@ -131,6 +136,8 @@ def main():
             "item_id": r["item_id"],
             "activity_qc": q["activity"],
             "clarity": q.get("clarity"),
+            "view": q.get("view"),
+            "facing": q.get("facing"),
             "person_pct": q.get("person_pct"),
             "crop_box": r["item"].get("crop_box"),
             "person_box": r["item"].get("person_box"),

@@ -18,11 +18,13 @@ from pathlib import Path
 from openai import OpenAI
 
 QC_PROMPT = (
-    "请观察这张图片并依次回答四个问题，每行一个答案，格式「编号.结论」：\n"
-    "1. 画面类型：是真实监控录像或街面实拍，还是广告、宣传片、教学视频、摆拍写真或动漫？\n"
+    "请观察这张图片并依次回答六个问题，每行一个答案，格式「编号.结论」：\n"
+    "1. 画面类型：是真实监控录像或街面实拍，还是广告、宣传片、教学视频、摆拍写真、新闻采访或动漫？\n"
     "2. 画面中是否有自行车、电动车或摩托车？\n"
     "3. 是否有人与两轮车同框？如果有，人是骑在车上、在车旁推行、还是站在车旁没有操控？\n"
-    "4. 画面清晰度和人物大小：清晰度分高/中/低；画面中主要人物大约占画面高度的百分之几？"
+    "4. 画面清晰度和人物大小：清晰度分高/中/低；画面中主要人物大约占画面高度的百分之几？\n"
+    "5. 拍摄视角：固定安装的监控/航拍俯视画面，还是手持跟拍（包括从背后跟拍）、第一人称骑行视角、人物采访特写、或其他？\n"
+    "6. 人物身体朝向：主要是正面、侧面、还是背面朝向镜头？看不清就答无法判断。"
 )
 
 
@@ -78,7 +80,32 @@ def parse_qc(text):
         pct = int(m.group(1))
 
     return {"type": ftype, "twowheel": twowheel, "activity": activity,
-            "clarity": clarity, "person_pct": pct}
+            "clarity": clarity, "person_pct": pct,
+            "view": parse_view(t), "facing": parse_facing(t)}
+
+
+def parse_view(text):
+    m = re.search(r"5\s*[.、)]\s*(.+)", text or "")
+    q5 = m.group(1) if m else ""
+    bad = ("跟拍", "手持", "第一人称", "POV", "采访", "自拍", "行车记录仪", "运动相机")
+    good = ("固定", "监控", "航拍", "俯视", "俯瞰", "高空", "探头", "固定机位")
+    if any(k in q5 for k in bad) and not any(k in q5 for k in good):
+        return "other"
+    if any(k in q5 for k in good):
+        return "surveillance"
+    return "unknown"
+
+
+def parse_facing(text):
+    m = re.search(r"6\s*[.、)]\s*(.+)", text or "")
+    q6 = m.group(1) if m else ""
+    if "背" in q6:
+        return "back"
+    if "侧" in q6:
+        return "side"
+    if "正" in q6:
+        return "front"
+    return "unknown"
 
 
 def main():
