@@ -20,6 +20,7 @@ from pathlib import Path
 POOLS = [
     ("bili", "/mnt/e/vlm-data/items_bili"),
     ("bili3", "/mnt/e/vlm-data/items_bili3"),
+    ("bili4", "/mnt/e/vlm-data/items_bili4"),
     ("visdrone", "/mnt/e/vlm-data/items_visdrone"),
 ]
 
@@ -41,7 +42,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
     ap.add_argument("--max-dup", type=int, default=6, help="ahash 去重阈值")
+    ap.add_argument("--sources", default=None, help="只合并这些来源，逗号分隔，如 bili4 或 bili,bili4")
     args = ap.parse_args()
+
+    pools = POOLS
+    if args.sources:
+        wanted = set(args.sources.split(","))
+        pools = [p for p in POOLS if p[0] in wanted]
+        print(f"[filter] 只合并来源: {args.sources}")
 
     out_dir = Path(args.out)
     img_out = out_dir / "items"
@@ -49,7 +57,7 @@ def main():
 
     ACT_OK = {"push", "ride", "stand"}
     records = []  # (source, qc_dict, item_dict)
-    for source, pool in POOLS:
+    for source, pool in pools:
         pool = Path(pool)
         qc_f = pool / "qc.jsonl"
         items_f = pool / "items.jsonl"
