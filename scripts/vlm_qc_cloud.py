@@ -115,7 +115,7 @@ def main():
         for attempt in range(4):
             try:
                 resp = client.chat.completions.create(
-                    model="qwen3-vl-flash", messages=msgs,
+                    model="qwen3-vl-plus", messages=msgs,
                     max_tokens=220, temperature=0.0)
                 text = resp.choices[0].message.content
                 rec = {"frame": fp.name, "raw": text[:500]}
