@@ -23,6 +23,7 @@ POOLS = [
     ("bili4", "/mnt/e/vlm-data/items_bili4"),
     ("bili5", "/mnt/e/vlm-data/items_bili5"),
     ("mot17", "/mnt/e/vlm-data/items_mot17"),
+    ("sdd", "/mnt/e/vlm-data/items_sdd"),
     ("visdrone", "/mnt/e/vlm-data/items_visdrone"),
 ]
 

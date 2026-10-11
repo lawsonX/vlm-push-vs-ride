@@ -77,36 +77,44 @@ def main():
         n_videos_found += 1
         target_frames = sorted(frames.keys())
         got = 0
-        cap = av.open(str(vfiles[0]))
+        try:
+            cap = av.open(str(vfiles[0]))
+        except Exception as e:
+            print(f"[skip] {key} 打不开: {e}", flush=True)
+            continue
         stream = cap.streams.video[0]
         wanted = set(target_frames)
         saved_this_video = 0
-        for frame in cap.decode(stream):
-            fn = frame.number
-            if fn in wanted:
-                img = frame.to_image()
-                arr = np.asarray(img)
-                H, W = arr.shape[:2]
-                for k, (tid, x1, y1, x2, y2) in enumerate(frames[fn]):
-                    bw, bh = x2 - x1, y2 - y1
-                    mx, my = bw * 0.25, bh * 0.25
-                    cx1 = max(0, int(x1 - mx)); cy1 = max(0, int(y1 - my))
-                    cx2 = min(W, int(x2 + mx)); cy2 = min(H, int(y2 + my))
-                    if cx2 - cx1 < 40 or cy2 - cy1 < 40:
-                        continue
-                    item_id = f"sdd_{key}_f{fn:06d}__t{tid}"
-                    fp = out / f"{item_id}.jpg"
-                    Image.fromarray(arr[cy1:cy2, cx1:cx2]).save(fp, quality=90)
-                    items.append({"item_id": item_id, "frame_id": f"sdd_{key}_f{fn:06d}",
-                                  "crop_box": [cx1, cy1, cx2, cy2],
-                                  "person_box": [x1, y1, x2, y2], "bike_cls": "biker(sdd)",
-                                  "person_h": int(bh), "scene": scene, "video": vdir, "t_sec": round(fn / 30, 1)})
-                    saved_this_video += 1
-                    if saved_this_video >= args.max_per_video:
+        try:
+            fn = -1
+            for frame in cap.decode(stream):
+                fn += 1
+                if fn in wanted:
+                    img = frame.to_image()
+                    arr = np.asarray(img)
+                    H, W = arr.shape[:2]
+                    for k, (tid, x1, y1, x2, y2) in enumerate(frames[fn]):
+                        bw, bh = x2 - x1, y2 - y1
+                        mx, my = bw * 0.25, bh * 0.25
+                        cx1 = max(0, int(x1 - mx)); cy1 = max(0, int(y1 - my))
+                        cx2 = min(W, int(x2 + mx)); cy2 = min(H, int(y2 + my))
+                        if cx2 - cx1 < 40 or cy2 - cy1 < 40:
+                            continue
+                        item_id = f"sdd_{key}_f{fn:06d}__t{tid}"
+                        fp = out / f"{item_id}.jpg"
+                        Image.fromarray(arr[cy1:cy2, cx1:cx2]).save(fp, quality=90)
+                        items.append({"item_id": item_id, "frame_id": f"sdd_{key}_f{fn:06d}",
+                                      "crop_box": [cx1, cy1, cx2, cy2],
+                                      "person_box": [x1, y1, x2, y2], "bike_cls": "biker(sdd)",
+                                      "person_h": int(bh), "scene": scene, "video": vdir, "t_sec": round(fn / 30, 1)})
+                        saved_this_video += 1
+                        if saved_this_video >= args.max_per_video:
+                            break
+                    wanted.discard(fn)
+                    if saved_this_video >= args.max_per_video or not wanted:
                         break
-                wanted.discard(fn)
-                if saved_this_video >= args.max_per_video or not wanted:
-                    break
+        except Exception as e:
+            print(f"[warn] {key} 解码中断(可能截断): {e}; 已存 {saved_this_video}", flush=True)
         cap.close()
         if n_videos_found % 10 == 0:
             print(f"{n_videos_found} 视频处理中，累计 {len(items)} items", flush=True)
