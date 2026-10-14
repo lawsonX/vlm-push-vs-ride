@@ -5,8 +5,8 @@
 每张可以写备注。标注自动保存，刷新页面不丢，下次打开接着标。
 
 启动：
-    python annotate_app.py --frames-dir /home/lawson/vlm-active/frames/trafficqa \
-        --manifest /home/lawson/vlm-active/frames/trafficqa/manifest.jsonl --port 8321
+    python annotate_app.py --frames-dir /mnt/d/vlm-active/frames/trafficqa \
+        --manifest /mnt/d/vlm-active/frames/trafficqa/manifest.jsonl --port 8321
 
 打开浏览器访问 http://localhost:8321 即可。
 
@@ -153,6 +153,9 @@ PAGE = """<!DOCTYPE html>
       <button onclick="nav(-1)">← 上一张 (A)</button>
       <button onclick="nav(1)">下一张 → (D)</button>
     </div>
+    <div class="nav">
+      <button onclick="skipUnlabeled()" style="background:#7b1fa2;border:1px solid #ba68c8">⤵ 跳到下一个未标注 (N)</button>
+    </div>
     <div class="guide">
       <b>判断要领：</b><br>
       <b>看脚</b>：推行时双脚在地上走路；骑行时脚踩踏板。<br>
@@ -236,6 +239,13 @@ function nav(delta) {
   idx = (idx + delta + items.length) % items.length;
   load();
 }
+function skipUnlabeled() {
+  for (let step = 1; step <= items.length; step++) {
+    const i = (idx + step) % items.length;
+    if (!items[i].labeled) { idx = i; load(); return; }
+  }
+  document.getElementById('savestate').textContent = '全部已标注完！';
+}
 document.getElementById('note').addEventListener('blur', () => save({}));
 document.getElementById('evidence').addEventListener('blur', () => save({}));
 document.addEventListener('keydown', e => {
@@ -246,6 +256,7 @@ document.addEventListener('keydown', e => {
   else if (e.key === '4') setLabel('invalid');
   else if (e.key === 'ArrowLeft' || e.key === 'a') nav(-1);
   else if (e.key === 'ArrowRight' || e.key === 'd') nav(1);
+  else if (e.key === 'n' || e.key === 'N') skipUnlabeled();
 });
 init();
 </script>
