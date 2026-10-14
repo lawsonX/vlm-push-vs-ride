@@ -1,123 +1,76 @@
 #!/usr/bin/env python3
-"""合成补充数据：用 qwen-image 生成监控视角的推行/骑行画面。
-
-为什么：真实数据（车载视频）里推行场景几乎不存在（标注 98 张 0 推行）。
-合成数据有 domain gap，但能把「推行」这个概念的画面补进池子，
-对训练尤其有价值（测试集仍会以真实图为主，合成图单独标记来源）。
-
-每张图记录 prompt 和来源标签（synth_push / synth_ride），
-生成后同样过 YOLO 预筛确认人+车同框，再进标注池由人工最终确认。
+"""合成监控场景图批量生成器（百炼 bl CLI 驱动）。
 
 用法：
-    python gen_synth.py --out /home/lawson/vlm-active/frames/synth --n-push 100 --n-ride 50
+    python gen_synth.py --out-dir /mnt/e/vlm-data/synth/iter3 --per-scenario 8
+
+设计要点（都是踩坑换来的）：
+- 活动描述放提示词最前面，风格描述放后面（先生成对的姿势，再套监控风）
+- 用 subprocess 列表传参，不走 shell 字符串拼接（中文标点经 bash 变量传递会偶发出问题）
+- 每张请求 n=4，请求之间 sleep（文生图 QPM 低）
+- --watermark false 关闭水印（qwen-image 系列支持）
+- 不把 --prompt-extend false 传给 qwen-image 同步模型（会得到无关回退图）
+- 生成结果必须人工/视觉验收：本脚本只负责采样，标签以验收时看到的实际内容为准
 """
 
 import argparse
-import base64
-import json
+import subprocess
 import time
 from pathlib import Path
 
-import requests
+STYLE = ("这是城市治安监控摄像头拍到的街景画面：镜头从路灯杆高处向下俯拍，广角畸变，"
+         "人物只占画面的一小部分，画面有噪点颗粒感、色彩偏灰、边缘模糊、有视频压缩痕迹。"
+         "背景是城市道路和斑马线。人物穿着日常、不看镜头、动作自然。")
+ROLES = ["穿蓝色外套的中年男子", "穿深色运动服的年轻女子", "背双肩包的年轻学生",
+         "穿黄色外卖服的骑手", "穿灰色夹克的老年男子", "拎塑料袋的中年女子"]
 
-KEY = Path(__file__).parent / "api_key.txt".read_text().strip()
-SUBMIT = "https://dashscope.aliyuncs.com/api/v1/services/aigc/text2image/image-synthesis"
-TASK = "https://dashscope.aliyuncs.com/api/v1/tasks/"
-HEADERS = {"Authorization": f"Bearer {KEY}", "Content-Type": "application/json"}
+ACT = {
+    "push_ebike": ("站在一辆电动车旁边，双手握住车把，身体完全站立，双脚交替在地上走路，"
+                   "正在步行推行这辆电动车，胯部悬空、没有坐在车座上",
+                   "坐在车上,骑车的姿势,脚踩踏板,摆拍,艺术写真"),
+    "ride_ebike": ("端正地坐在电动车座垫上，双手握着车把，双脚踩在脚踏板上，"
+                   "正在骑这辆电动车行驶",
+                   "推车,站立走路,人在车旁步行,摆拍,艺术写真"),
+    "push_bike": ("站在一辆自行车旁边，双手扶着车把，身体完全站立，双脚交替在地上走路，"
+                  "正在步行推行这辆自行车，没有坐在车座上",
+                  "骑车,坐在车座上,脚踩踏板,摆拍,艺术写真"),
+    "ride_bike": ("坐在自行车座垫上，双手握着车把，双脚踩着脚踏板，正在骑自行车",
+                  "推车,站立走路,摆拍,艺术写真"),
+}
 
 
-def gen_one(prompt, out_path, retries=3):
-    """提交文生图任务并轮询结果，成功写文件返回 True。"""
-    for a in range(retries):
-        try:
-            r = requests.post(SUBMIT, headers=HEADERS, json={
-                "model": "qwen-image-2.0",
-                "input": {"prompt": prompt},
-                "parameters": {"size": "1440*1080", "n": 1},
-            }, timeout=60)
-            if r.status_code != 200:
-                print("submit fail:", r.text[:150], flush=True)
-                time.sleep(3)
-                continue
-            task_id = r.json()["output"]["task_id"]
-            for _ in range(60):  # 最多等 3 分钟
-                time.sleep(3)
-                t = requests.get(TASK + task_id, headers=HEADERS, timeout=30).json()
-                status = t["output"]["task_status"]
-                if status == "SUCCEEDED":
-                    url = t["output"]["results"][0]["url"]
-                    img = requests.get(url, timeout=60).content
-                    out_path.write_bytes(img)
-                    return True
-                if status in ("FAILED", "CANCELED"):
-                    print("task fail:", str(t)[:150], flush=True)
-                    break
-        except Exception as e:
-            print("err:", str(e)[:120], flush=True)
-        time.sleep(3)
-    return False
-
-BASE = ("监控摄像头固定机位画面，{scene}，{time}，真实安防监控画质，"
-        "略有色块噪点，画面角落有时间戳水印，{person}，")
-
-PUSH_SCENES = [
-    "一名中年男子在小区道路上推行一辆电动自行车，双手扶把，双脚着地走路，臀部不在车座上",
-    "一名外卖员推行着没电的电动车走在人行道边，身体侧向一边，一步一步走",
-    "一位老人推着一辆自行车慢慢走过路口，人完全站在车的一侧",
-    "一名女子推行共享单车走在非机动车道边缘，双脚交替着地",
-    "一名男子雨天推行电瓶车，一手扶把一手撑伞，车在缓慢移动",
-    "两名行人其中一人推行着电动自行车另一人步行陪同，推行的人双脚走路",
-    "一名男子在地下车库坡道推行电动车，身体直立走路，车倾斜着",
-    "一名穿校服的男孩推着自行车走在放学路上，人完全没坐在车上",
-]
-RIDE_SCENES = [
-    "一名男子骑着电动自行车行驶在非机动车道上，臀部坐在车座上，双脚踩在踏板上",
-    "一名外卖员骑着电动车穿过路口，身体前倾坐着，脚踩踏板",
-    "一名女子骑着共享单车在道路上骑行，坐姿正常，双脚在踩踏",
-    "一名男子夜间骑着电瓶车，车灯亮着，人坐在车上",
-    "一对骑电动车的男女，驾驶员坐着握把，后座载人，车在行驶",
-    "一名老人骑着自行车沿路边骑行，屁股坐在车座上踩踏板",
-]
-TIMES = ["白天", "傍晚", "夜晚路灯下"]
-SCENES_BG = ["小区门口道路", "城市路口", "人行道旁", "非机动车道", "商业街路边", "地下车库出入口"]
+def build_prompt(activity: str, role: str) -> str:
+    return f"画面中央，一名{role}{activity}。{STYLE}"
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", required=True)
-    ap.add_argument("--n-push", type=int, default=100)
-    ap.add_argument("--n-ride", type=int, default=50)
+    ap.add_argument("--out-dir", required=True)
+    ap.add_argument("--per-scenario", type=int, default=8, help="每个场景要多少张（n=4 每次）")
+    ap.add_argument("--model", default="qwen-image-2.0")
+    ap.add_argument("--sleep", type=float, default=8.0, help="请求间隔秒数（QPM 限制）")
     args = ap.parse_args()
 
-    out = Path(args.out)
+    out = Path(args.out_dir)
     out.mkdir(parents=True, exist_ok=True)
-    log = open(out / "gen_log.jsonl", "w", encoding="utf-8")
+    n_calls = (args.per_scenario + 3) // 4
+    role_idx = 0
 
-    import itertools, random
-    random.seed(0)
-    combos = list(itertools.product(PUSH_SCENES, TIMES, SCENES_BG))
-    random.shuffle(combos)
-
-    def run(label, n, combos):
-        made = 0
-        for i, (action, t, bg) in enumerate(combos):
-            if made >= n:
-                break
-            prompt = BASE.format(scene=bg, time=t, person=action)
-            fid = f"synth_{label}_{made:04d}"
-            ok = gen_one(prompt, out / f"{fid}.jpg")
-            if ok:
-                log.write(json.dumps({"frame_id": fid, "source": f"synth_{label}", "prompt": prompt},
-                                     ensure_ascii=False) + "\n")
-                log.flush()
-                made += 1
-                if made % 10 == 0:
-                    print(f"{label}: {made}/{n}", flush=True)
-
-    run("push", args.n_push, combos)
-    run("ride", args.n_ride, [(a, t, b) for a in RIDE_SCENES for t in TIMES for b in SCENES_BG])
-    log.close()
-    print("done")
+    for scenario, (activity, negative) in ACT.items():
+        for call in range(n_calls):
+            role = ROLES[role_idx % len(ROLES)]
+            role_idx += 1
+            cmd = ["bl", "image", "generate", "--model", args.model,
+                   "--size", "16:9", "--n", "4", "--watermark", "false",
+                   "--negative-prompt", negative,
+                   "--prompt", build_prompt(activity, role),
+                   "--out-dir", str(out), "--out-prefix", f"{scenario}_r{call}"]
+            print(f"[{scenario} 第{call+1}/{n_calls}次] 角色: {role}")
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+            tail = (r.stdout + r.stderr).strip().splitlines()
+            print("  " + (tail[-1] if tail else "(no output)"))
+            time.sleep(args.sleep)
+    print(f"完成，输出目录: {out}")
 
 
 if __name__ == "__main__":
