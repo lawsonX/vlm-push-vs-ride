@@ -74,8 +74,8 @@ def main():
                     help="测试集每个类别抽多少张（默认 24，两类共 48）")
     ap.add_argument("--balance", action="store_true",
                     help="训练集 push/ride 1:1 配平（推行是少数类）")
-    ap.add_argument("--include-invalid", action="store_true",
-                    help="把 invalid 图作为负样本加入训练集（默认不加）")
+    # 2026-10-15 lawson 拍板：unsure/invalid 一律舍弃，永不进训练（含负样本）。
+    # 原 --include-invalid 功能已删除。
     ap.add_argument("--strip-prefix", default=None, help="去掉 image 路径的旧前缀")
     ap.add_argument("--add-prefix", default=None, help="加上 image 路径的新前缀")
     args = ap.parse_args()
@@ -166,36 +166,16 @@ def main():
     for fid in sorted(test_ids, key=h):
         emit(fid, "test")
 
-    # invalid 负样本（可选，只进训练集）
-    n_inv = 0
-    if args.include_invalid:
-        inv_q = DIRECT_QUESTIONS[0]
-        inv_a = ("图中没有可以判断的人车组合，或画面不符合要求，无法回答。")
-        for fid, a in sorted(invalid.items(), key=lambda kv: h(kv[0])):
-            if find_image(frames_dir, fid) is None:
-                continue
-            ftrain.write(json.dumps({
-                "frame_id": fid, "image": img_path(fid), "style": "direct_negative",
-                "split": "train", "label": "invalid",
-                "messages": [
-                    {"role": "user", "content": IMG_PLACEHOLDER + inv_q},
-                    {"role": "assistant", "content": inv_a},
-                ],
-            }, ensure_ascii=False) + "\n")
-            n_inv += 1
-
     ftrain.close()
     ftest.close()
     (out_dir / "report.json").write_text(json.dumps({
         "annotations": len(anns), "gold": len(gold),
         "test_images": len(test_ids),
         "train_images": len(train_ids),
-        "invalid_negatives": n_inv,
         "samples": report,
     }, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"输出: {out_dir}/train.jsonl, test.jsonl, report.json")
     print(f"样本数: train={sum(report['train'].values())}, test={sum(report['test'].values())}")
-    print(f"invalid 负样本: {n_inv}")
 
 
 if __name__ == "__main__":
