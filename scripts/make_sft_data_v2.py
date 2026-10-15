@@ -74,6 +74,8 @@ def main():
                     help="首次划分时测试集每个类别抽多少张（默认 24，两类共 48）")
     ap.add_argument("--test-ids", default=None,
                     help="测试集冻结名单文件（每行一个 frame_id）。传了之后测试集永不变，新金标全进训练集")
+    ap.add_argument("--probes", default=None,
+                    help="探针答案验证文件（gen_probes.py 产出）。只有逐图验证过的探针才出样本")
     ap.add_argument("--balance", action="store_true",
                     help="训练集 push/ride 1:1 配平（推行是少数类）")
     # 2026-10-15 lawson 拍板：unsure/invalid 一律舍弃，永不进训练（含负样本）。
@@ -138,6 +140,14 @@ def main():
     ftest = open(out_dir / "test.jsonl", "w", encoding="utf-8")
     report = {"train": {}, "test": {}}
 
+    # 探针答案（逐图云端验证过，防与图矛盾）；没有验证结果的图不出探针样本
+    probes = {}
+    if args.probes:
+        for l in open(args.probes, encoding="utf-8"):
+            if l.strip():
+                d = json.loads(l)
+                probes[d["frame_id"]] = d
+
     def img_path(fid):
         p = str(find_image(frames_dir, fid))
         if args.strip_prefix and p.startswith(args.strip_prefix):
@@ -150,11 +160,35 @@ def main():
         a = gold[fid]
         label = a["label"]
         ev = clean_evidence(a.get("evidence") or "")
+        word = LABEL_WORD[label]
         msgs_direct = [
             {"role": "user", "content": IMG_PLACEHOLDER + DIRECT_QUESTIONS[int(h(fid), 16) % len(DIRECT_QUESTIONS)]},
-            {"role": "assistant", "content": LABEL_WORD[label]},
+            {"role": "assistant", "content": word},
         ]
+        # 是非探针（2026-10-15 新增，docs/14 §1.1）：把判断拆成「坐没坐」「脚在哪」两个
+        # 单独的是非题。答案经 gen_probes.py 逐图云端验证（站立骑行的图答案不是「有」），
+        # 未通过验证的图不出探针样本
+        pv = probes.get(fid, {})
         samples = [("direct", msgs_direct)]
+        if "seat" in pv:
+            samples.append(("probe_seat", [
+                {"role": "user", "content": IMG_PLACEHOLDER + "这个人有没有坐在车座上？只回答「有」或「没有」。"},
+                {"role": "assistant", "content": pv["seat"]},
+            ]))
+        if "feet" in pv:
+            samples.append(("probe_feet", [
+                {"role": "user", "content": IMG_PLACEHOLDER + "这个人的双脚是在地上走路，还是踩在车的踏板上？只回答「地上」或「踏板」。"},
+                {"role": "assistant", "content": pv["feet"]},
+            ]))
+        # 开放描述（docs/14 §1.2）：覆盖 lawson 最初发现幻觉的 caption 场景
+        if ev:
+            caption_ans = f"图中可以看到：{ev}。综合这些迹象，这个人正在{word}这辆车。"
+        else:
+            caption_ans = f"图中的人正在{word}这辆车。"
+        samples.append(("caption", [
+            {"role": "user", "content": IMG_PLACEHOLDER + "请描述一下图中这个人和这辆车的状态。"},
+            {"role": "assistant", "content": caption_ans},
+        ]))
         if ev:
             samples.append(("chain", [
                 {"role": "user", "content": IMG_PLACEHOLDER + CHAIN_QUESTION},
@@ -164,7 +198,7 @@ def main():
                 {"role": "user", "content": IMG_PLACEHOLDER + GUIDE_Q1},
                 {"role": "assistant", "content": guide_first_answer(ev)},
                 {"role": "user", "content": GUIDE_Q2},
-                {"role": "assistant", "content": LABEL_WORD[label]},
+                {"role": "assistant", "content": word},
             ]))
         fh = ftrain if split == "train" else ftest
         for style, msgs in samples:
