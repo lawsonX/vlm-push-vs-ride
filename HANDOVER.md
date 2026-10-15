@@ -48,6 +48,19 @@ python -c "from ultralytics import YOLO; YOLO('yolov8n.pt'); YOLO('yolov8n-seg.p
 - 阿里云 dashscope API key（云端模型测试/预筛/质检用）：放 `api_testing/api_key.txt`（与 scripts/ 里 api 脚本同目录约定），原版在 lawson 的 Windows 桌面 `dashscope_api.txt`。
 - GitHub：lawson 已登录 gh cli。
 
+## 2.4 本机新增数据资产（2026-10-15，数据机侧产出）
+
+数据机（Windows+WSL 旧设备，无 GPU）在交接后持续产出了**新一套标注数据集**，与本仓库 data/ 目录的旧管线是平行关系，更完整、政策更严，**训练优先用这套**：
+
+- **交付包**：`delivery_v02.zip`（约 20MB，在数据机 E:\vlm-data\，由 lawson 手动拷来）。
+  解压后含 190 张图 + train/test jsonl + 冻结测试集名单 + README。
+  内容：382 条训练样本（142 图配平 + 证据链/引导式三种问法）、48 条冻结测试样本。
+- **规范文档**：`docs/13-SFT数据格式规范与训练方案.md`（数据格式 + LoRA 训练配方 + 实验清单 A1~A6）。
+- **数据政策（lawson 拍板，全项目生效）**：不确定/invalid 一律舍弃不做负样本；"跨坐"不算推行；
+  测试集冻结（名单 test_ids.txt），新金标一律进训练集。
+- **生成脚本**：`scripts/make_sft_data_v2.py`（支持 --test-ids 冻结）、`scripts/gen_evidence.py`（云端生成证据+人工标签校验）。
+- 实验结论参考：`docs/15-实验-合成图像可行性.md`（合成图路线已降级为辅助手段，暂不量产）。
+
 ## 3. 目录落位建议
 
 ```
