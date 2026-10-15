@@ -75,14 +75,29 @@ def main():
     ap.add_argument("--workers", type=int, default=12)
     ap.add_argument("--batch-size", type=int, default=200)
     ap.add_argument("--push-cap", type=int, default=120)
+    ap.add_argument("--limit", type=int, default=0, help="本轮最多处理多少张（0=全部），配合增量输出分轮跑")
+    ap.add_argument("--min-size", type=int, default=360, help="选图时最小边长像素，太小的不要")
+    ap.add_argument("--exclude-sources", default="items_sdd,items_mot17",
+                    help="选图时排除的来源目录（逗号分隔；sdd 小图已被 lawson 全部判无效）")
     ap.add_argument("--select-only", action="store_true",
                     help="跳过云端调用，直接从已有 out-jsonl 选批次")
     args = ap.parse_args()
 
     if not args.select_only:
-        cands = collect_candidates()
-        print(f"候选图: {len(cands)} 张（模型 {args.model}）")
-        client = OpenAI(api_key=load_key(), base_url=BASE_URL)
+        cands_all = collect_candidates()
+        # 断点续跑：跳过已有预测结果的图
+        done = set()
+        out_path = Path(args.out_jsonl)
+        if out_path.exists():
+            for l in open(out_path, encoding="utf-8"):
+                if l.strip():
+                    done.add(json.loads(l)["frame_id"])
+            print(f"已完成 {len(done)} 张，续跑")
+        cands = [c for c in cands_all if c[1] not in done]
+        if args.limit:
+            cands = cands[:args.limit]
+        print(f"本轮候选: {len(cands)} 张（模型 {args.model}）")
+        client = OpenAI(api_key=load_key(), base_url=BASE_URL, timeout=60)
 
         def work(c):
             source, fid, path = c
@@ -107,22 +122,39 @@ def main():
                     time.sleep(2 * (attempt + 1))
             return None
 
-        with open(args.out_jsonl, "w", encoding="utf-8") as f, \
+        with open(args.out_jsonl, "a", encoding="utf-8") as f, \
                 ThreadPoolExecutor(max_workers=args.workers) as ex:
             for i, res in enumerate(ex.map(work, cands)):
                 if res:
                     f.write(json.dumps(res, ensure_ascii=False) + "\n")
                 if (i + 1) % 200 == 0:
-                    print(f"  进度 {i+1}/{len(cands)}")
-        print(f"预测完成: {args.out_jsonl}")
+                    print(f"  进度 {i+1}/{len(cands)}", flush=True)
+        print(f"本轮预测完成: {args.out_jsonl}")
 
     # ---- 选批次 ----
     preds = [json.loads(l) for l in open(args.out_jsonl, encoding="utf-8") if l.strip()]
     from collections import Counter
     print("预测分布:", Counter(p["pred"] for p in preds))
+
+    # 过滤：排除低质量来源 + 太小的图
+    from PIL import Image
+    excluded = set(args.exclude_sources.split(","))
+    kept = []
+    for p in preds:
+        if p["source"] in excluded or p["pred"] in ("error", "none"):
+            continue
+        try:
+            with Image.open(p["path"]) as im:
+                if min(im.size) < args.min_size:
+                    continue
+        except Exception:
+            continue
+        kept.append(p)
+    print(f"过滤后可用: {len(kept)} 张（排除 {len(preds)-len(kept)} 张）")
+
     rng = random.Random(42)
-    push = [p for p in preds if p["pred"] == "push"]
-    ride = [p for p in preds if p["pred"] == "ride"]
+    push = [p for p in kept if p["pred"] == "push"]
+    ride = [p for p in kept if p["pred"] == "ride"]
     rng.shuffle(push), rng.shuffle(ride)
     sel = push[:args.push_cap] + ride[:max(0, args.batch_size - len(push[:args.push_cap]))]
     rng.shuffle(sel)
