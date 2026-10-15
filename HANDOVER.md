@@ -52,9 +52,8 @@ python -c "from ultralytics import YOLO; YOLO('yolov8n.pt'); YOLO('yolov8n-seg.p
 
 数据机（Windows+WSL 旧设备，无 GPU）在交接后持续产出了**新一套标注数据集**，与本仓库 data/ 目录的旧管线是平行关系，更完整、政策更严，**训练优先用这套**：
 
-- **交付包**：`delivery_v02.zip`（约 20MB，在数据机 E:\vlm-data\，由 lawson 手动拷来）。
-  解压后含 190 张图 + train/test jsonl + 冻结测试集名单 + README。
-  内容：382 条训练样本（142 图配平 + 证据链/引导式三种问法）、48 条冻结测试样本。
+- **交付包**：`delivery_v02.zip`（约 86MB，在数据机 E:\vlm-data\，由 lawson 手动拷来；v0.4 含经典光影增强层）。
+  解压后含 616 张图 + train.jsonl（721 条）+ train_aug.jsonl（2163 条增强样本，消融用）+ test.jsonl（161 条四问法）+ 冻结测试集名单 + README。
 - **规范文档**：`docs/13-SFT数据格式规范与训练方案.md`（数据格式 + LoRA 训练配方 + 实验清单 A1~A6）。
 - **数据政策（lawson 拍板，全项目生效）**：不确定/invalid 一律舍弃不做负样本；"跨坐"不算推行；
   测试集冻结（名单 test_ids.txt），新金标一律进训练集。
