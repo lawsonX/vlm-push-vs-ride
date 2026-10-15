@@ -79,13 +79,19 @@ def main():
     targets = [a for a in anns
                if a["frame_id"] in train_ids and a.get("label") in ("push", "ride")]
     # 每张图只处理一次（train.jsonl 里同一张图可能有多行）
+    # 已有证据的跳过（增量：标注人写的或前一轮生成且通过校验的，不重复花钱）
     seen = set()
     uniq = []
+    n_skip = 0
     for a in targets:
-        if a["frame_id"] not in seen:
-            seen.add(a["frame_id"])
-            uniq.append(a)
-    print(f"需要生成证据的训练图：{len(uniq)} 张（模型 {args.model}）")
+        if a["frame_id"] in seen:
+            continue
+        seen.add(a["frame_id"])
+        if (a.get("evidence") or "").strip():
+            n_skip += 1
+            continue
+        uniq.append(a)
+    print(f"需要生成证据的训练图：{len(uniq)} 张（跳过已有证据 {n_skip} 张，模型 {args.model}）")
 
     client = OpenAI(api_key=load_key(), base_url=BASE_URL)
     results = {}

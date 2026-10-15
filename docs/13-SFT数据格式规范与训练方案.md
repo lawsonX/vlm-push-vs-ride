@@ -124,9 +124,11 @@ direct 格式从以下问句中随机选一个（每张图固定随机，可复�
 
 - Thinking Machines Lab《LoRA Without Regret》（2025-09，Schulman 等）：LoRA 在中小数据 SFT 下可与全参数微调持平；关键条件是 LoRA 覆盖 MLP 层、学习率约 10 倍、有效批次 ≤32。
 
-## 9. 当前产物状态（2026-10-15）
+## 9. 当前产物状态（2026-10-15 深夜更新）
 
-- 生成脚本 `scripts/make_sft_data_v2.py` 已就绪；证据生成脚本 `scripts/gen_evidence.py`（云端生成 + 人工标签校验，防脏数据）已就绪。
-- 已用 572 条当前标注产出 v0 数据集：`E:\vlm-data\sft_v2\`（train.jsonl 290 条 = 112 direct + 89 chain + 89 guide；test.jsonl 48 张图，推行骑行各 24，永不参与训练）。
-- ⚠️ v0 里曾含 255 条 invalid 负样本，**按 lawson 2026-10-15 新政策（invalid 一律舍弃）已作废**，须用更新后的 make_sft_data_v2.py 重新生成。
-- 证据生成通过率 89/112。lawson 标注时若顺手写「判断依据」框，可替换云端证据，重新跑一遍两个脚本即可。
+- 已用 1119 条标注（全部标完）产出 **v0.2 数据集**：`E:\vlm-data\sft_v2\`
+  - 金标 411 张（推行 95 / 骑行 316），测试集冻结 48 张（名单 `test_ids.txt`），训练集配平 142 张图
+  - train.jsonl 382 条 = 142 direct + 120 chain + 120 guide；test.jsonl 48 条
+  - 测试集冻结机制：make_sft_data_v2.py 传 `--test-ids test_ids.txt`，新金标一律进训练集，测试集永不变
+- 证据链：132 张金标带判断依据（人工/云端生成经人工标签校验），chain/guide 格式覆盖 120 张训练图。
+- ⚠️ 历史作废记录：v0 曾含 255 条 invalid 负样本（已按 lawson 新政策删除）。

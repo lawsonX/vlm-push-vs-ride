@@ -71,7 +71,9 @@ def main():
     ap.add_argument("--frames-dir", required=True)
     ap.add_argument("--out-dir", required=True)
     ap.add_argument("--test-per-class", type=int, default=24,
-                    help="测试集每个类别抽多少张（默认 24，两类共 48）")
+                    help="首次划分时测试集每个类别抽多少张（默认 24，两类共 48）")
+    ap.add_argument("--test-ids", default=None,
+                    help="测试集冻结名单文件（每行一个 frame_id）。传了之后测试集永不变，新金标全进训练集")
     ap.add_argument("--balance", action="store_true",
                     help="训练集 push/ride 1:1 配平（推行是少数类）")
     # 2026-10-15 lawson 拍板：unsure/invalid 一律舍弃，永不进训练（含负样本）。
@@ -96,17 +98,28 @@ def main():
     if missing:
         print(f"warning: {len(missing)} 张金标找不到图文件，跳过")
 
-    # ---- 按图划分训练/测试（分层、确定性）----
-    def take_test(ids):
-        ids = sorted(ids, key=h)  # 哈希排序 = 确定性随机
-        return set(ids[:args.test_per_class])
+    # ---- 按图划分训练/测试 ----
+    # 铁律：测试集冻结。传了 --test-ids 就用文件里那套（首批 48 张），永不动摇；
+    # 新金标一律进训练集。不传才走"哈希排序取前 N"的首次划分。
+    if args.test_ids:
+        frozen = {l.strip() for l in open(args.test_ids, encoding="utf-8") if l.strip()}
+        test_ids = {f for f in frozen if f in gold}
+        missing_test = frozen - test_ids
+        if missing_test:
+            print(f"warning: test-ids 中有 {len(missing_test)} 张不在当前金标里（可能改标了），测试集剩 {len(test_ids)} 张")
+        train_ids = [f for f in gold if f not in test_ids]
+        print(f"测试集(冻结): {len(test_ids)} 张；训练集候选 {len(train_ids)} 张图")
+    else:
+        def take_test(ids):
+            ids = sorted(ids, key=h)  # 哈希排序 = 确定性随机
+            return set(ids[:args.test_per_class])
 
-    push_ids = [f for f, a in gold.items() if a["label"] == "push"]
-    ride_ids = [f for f, a in gold.items() if a["label"] == "ride"]
-    test_ids = take_test(push_ids) | take_test(ride_ids)
-    train_ids = [f for f in gold if f not in test_ids]
-    print(f"测试集: push={len(test_ids & set(push_ids))}, ride={len(test_ids & set(ride_ids))}"
-          f"（共 {len(test_ids)} 张图）；训练集候选 {len(train_ids)} 张图")
+        push_ids = [f for f, a in gold.items() if a["label"] == "push"]
+        ride_ids = [f for f, a in gold.items() if a["label"] == "ride"]
+        test_ids = take_test(push_ids) | take_test(ride_ids)
+        train_ids = [f for f in gold if f not in test_ids]
+        print(f"测试集: push={len(test_ids & set(push_ids))}, ride={len(test_ids & set(ride_ids))}"
+              f"（共 {len(test_ids)} 张图）；训练集候选 {len(train_ids)} 张图")
 
     # ---- 训练集配平（可选）----
     if args.balance:
