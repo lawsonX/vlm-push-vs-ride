@@ -59,7 +59,7 @@ def parse_caption(text, gold):
     等同义说法，不含「推行」字面词。
     """
     says_ride = any(k in text for k in ("骑行", "骑在", "骑着", "骑车走", "骑在车上", "正在骑"))
-    says_push = any(k in text for k in ("推行", "推车", "步行推", "走着推", "站在车旁",
+    says_push = any(k in text for k in ("推行", "推车", "推着", "步行推", "走着推", "站在车旁",
                                         "未踩踏板", "双脚均着地", "双脚着地", "未坐在车座",
                                         "站在地面", "双脚站在地面"))
     if gold == "push":

@@ -1,0 +1,39 @@
+{
+  "ckpt": "a4b_qwen35_gentle",
+  "samples": 161,
+  "per_style": {
+    "direct": {
+      "hit": 38,
+      "miss": 10
+    },
+    "probe_seat": {
+      "hit": 26,
+      "miss": 4
+    },
+    "probe_feet": {
+      "hit": 32,
+      "miss": 3
+    },
+    "caption": {
+      "hit": 37,
+      "miss": 1,
+      "none": 10
+    }
+  },
+  "overall": {
+    "hit": 133,
+    "miss": 18,
+    "none": 10
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 23,
+      "ride": 1
+    },
+    "ride": {
+      "push": 9,
+      "ride": 15
+    }
+  },
+  "note": "caption判分器v3(补「推着」)，离线重判"
+}

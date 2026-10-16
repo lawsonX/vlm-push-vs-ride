@@ -15,14 +15,14 @@
     },
     "caption": {
       "miss": 3,
-      "none": 35,
-      "hit": 10
+      "none": 33,
+      "hit": 12
     }
   },
   "overall": {
-    "hit": 112,
+    "hit": 114,
     "miss": 14,
-    "none": 35
+    "none": 33
   },
   "confusion_direct": {
     "push": {
@@ -32,5 +32,5 @@
       "ride": 24
     }
   },
-  "note": "caption判分器v2：同义表述计对，描述未表态单列"
+  "note": "caption判分器v3(补「推着」)，离线重判"
 }

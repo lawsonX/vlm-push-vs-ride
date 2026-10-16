@@ -76,7 +76,7 @@ class SFTDatasetV2(Dataset):
         for p in data_paths:
             rows += [json.loads(l) for l in open(p, encoding="utf-8") if l.strip()]
         tag = hashlib.md5(
-            (json.dumps([str(p) for p in data_paths]) + str(len(rows))).encode()
+            ("enc2" + json.dumps([str(p) for p in data_paths]) + str(len(rows))).encode()
         ).hexdigest()[:12]
         cache = Path(cache_dir) / f"tok_{tag}.pt"
 
@@ -111,29 +111,44 @@ class SFTDatasetV2(Dataset):
         full_text = processor.apply_chat_template(
             blocks, tokenize=False, add_generation_prompt=False)
         inputs = processor(text=[full_text], images=[img], return_tensors="pt")
+        ids_img = inputs["input_ids"][0]
+        n = ids_img.shape[0]
 
-        n = inputs["input_ids"].shape[1]
+        # 用「金标答案在全文里的字符区间」定位 loss 范围，对任何聊天模板成立。
+        # （增量前缀法在 Qwen3.5 上会破：其模板给 assistant 加 <think> 包裹层，
+        #   带生成头的前缀渲染与全文渲染在前缀处对不齐。）
+        tok = processor.tokenizer(full_text, add_special_tokens=False,
+                                  return_offsets_mapping=True)
+        text_ids = tok["input_ids"]
+        offsets = tok["offset_mapping"]
+        # 图片占位 token 在带图序列里被展开成 N 个 token，其后所有下标平移 (N-1)。
+        # N-1 = 带图总长 - 纯文本总长（一张图， empirically 计算，与模型/合并率无关）
+        pad_id = processor.tokenizer.convert_tokens_to_ids("<|image_pad|>")
+        pad_pos = text_ids.index(pad_id)
+        shift = n - len(text_ids)
+
         labels = torch.full((n,), -100)
-        # 逐 assistant 轮定位 [轮起点, 轮终点)，只在这些 token 上算 loss
         assistant_spans = []
-        for i, m in enumerate(blocks):
+        cursor = 0
+        for m in blocks:
             if m["role"] != "assistant":
                 continue
-            # 前缀 = 本轮 assistant 之前的所有消息（以 user 结尾）+ 生成头。
-            # 注意不能用 blocks[:i+1]：单轮数据的 jsonl 里已带金标回答，那样会把答案也拼进去
-            prefix_text = processor.apply_chat_template(
-                blocks[: i], tokenize=False, add_generation_prompt=True)
-            prefix_inputs = processor(text=[prefix_text], images=[img], return_tensors="pt")
-            pre_len = prefix_inputs["input_ids"].shape[1]
-            # 前缀必须正好是全文的前缀（Qwen 模板每轮以 <|im_end|> 等特殊符分界，成立）
-            assert torch.equal(inputs["input_ids"][0, :pre_len], prefix_inputs["input_ids"][0]), \
-                f"{row['frame_id']} 前缀 token 不一致"
-            upto_text = processor.apply_chat_template(
-                blocks[: i + 1], tokenize=False, add_generation_prompt=False)
-            upto_inputs = processor(text=[upto_text], images=[img], return_tensors="pt")
-            end_len = upto_inputs["input_ids"].shape[1]
-            assistant_spans.append((pre_len, end_len))
-            labels[pre_len:end_len] = inputs["input_ids"][0, pre_len:end_len]
+            gold = m["content"]
+            # 从 cursor 起找 gold 的最后一次出现：直接问句里也含「推行/骑行」字样，
+            # 最后一次出现才是答案本身
+            idx = full_text.rfind(gold, cursor)
+            assert idx >= cursor, f"{row['frame_id']} 在渲染文本中找不到答案"
+            s, e = idx, idx + len(gold)
+            ts = next(i for i, (a, b) in enumerate(offsets) if b > s)
+            te = next(i for i in range(ts, len(offsets)) if offsets[i][0] >= e)
+            ts_img = ts + (shift if ts > pad_pos else 0)
+            te_img = te + (shift if te > pad_pos else 0)
+            decoded = processor.decode(ids_img[ts_img:te_img], skip_special_tokens=True)
+            assert decoded.strip() == gold.strip(), \
+                f"{row['frame_id']} loss区与金标不符: {decoded[:40]!r} vs {gold[:40]!r}"
+            assistant_spans.append((ts_img, te_img))
+            labels[ts_img:te_img] = ids_img[ts_img:te_img]
+            cursor = e
 
         item = {k: v[0] for k, v in inputs.items()
                 if k in ("input_ids", "attention_mask")}

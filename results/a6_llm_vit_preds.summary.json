@@ -1,6 +1,5 @@
 {
-  "ckpt": "ckpt/a6_llm_vit/final",
-  "test": "data/sft_v2/test.jsonl",
+  "ckpt": "a6_llm_vit",
   "samples": 161,
   "per_style": {
     "direct": {
@@ -32,5 +31,6 @@
     "ride": {
       "ride": 24
     }
-  }
+  },
+  "note": "caption判分器v3(补「推着」)，离线重判"
 }

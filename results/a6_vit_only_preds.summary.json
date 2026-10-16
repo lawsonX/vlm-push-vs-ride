@@ -1,6 +1,5 @@
 {
-  "ckpt": "ckpt/a6_vit_only/final",
-  "test": "data/sft_v2/test.jsonl",
+  "ckpt": "a6_vit_only",
   "samples": 161,
   "per_style": {
     "direct": {
@@ -16,15 +15,15 @@
       "miss": 13
     },
     "caption": {
-      "miss": 4,
-      "none": 33,
-      "hit": 11
+      "miss": 3,
+      "none": 32,
+      "hit": 13
     }
   },
   "overall": {
-    "miss": 30,
-    "hit": 98,
-    "none": 33
+    "miss": 29,
+    "hit": 100,
+    "none": 32
   },
   "confusion_direct": {
     "push": {
@@ -34,5 +33,6 @@
     "ride": {
       "ride": 24
     }
-  }
+  },
+  "note": "caption判分器v3(补「推着」)，离线重判"
 }
