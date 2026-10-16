@@ -53,23 +53,27 @@ def parse_probe_feet(text):
 def parse_caption(text, gold):
     """开放描述：检查有没有把推行说成骑行（或反过来）。
 
-    返回 (判分, 细节)。push 图说了「骑行/骑在/骑着走」→ 错（幻觉）；
-    ride 图说了「推行/推车/步行推」→ 错。两头都没提 → 记 none，不算对也不算错。
+    返回 (判分, 细节)。判分三档：ok=描述与金标一致，wrong=明确说反（真幻觉），
+    none=描述了但没表态（不算对也不算错，单独统计）。
+    关键词集从 A1 评测的错例复盘扩充：很多正确描述用「站在车旁/双脚着地/未踩踏板」
+    等同义说法，不含「推行」字面词。
     """
-    says_ride = any(k in text for k in ("骑行", "骑在", "骑着", "骑车走", "骑在车上"))
-    says_push = any(k in text for k in ("推行", "推车", "步行推", "走着推"))
+    says_ride = any(k in text for k in ("骑行", "骑在", "骑着", "骑车走", "骑在车上", "正在骑"))
+    says_push = any(k in text for k in ("推行", "推车", "步行推", "走着推", "站在车旁",
+                                        "未踩踏板", "双脚均着地", "双脚着地", "未坐在车座",
+                                        "站在地面", "双脚站在地面"))
     if gold == "push":
-        if says_ride:
+        if says_ride and not says_push:
             return "wrong", f"push图说成骑行: {text[:60]}"
         if says_push:
             return "ok", ""
-        return "none", "未提及"
+        return "none", "描述但未表态"
     else:
-        if says_push:
+        if says_push and not says_ride:
             return "wrong", f"ride图说成推行: {text[:60]}"
         if says_ride:
             return "ok", ""
-        return "none", "未提及"
+        return "none", "描述但未表态"
 
 
 def judge(style, text, gold):
@@ -85,6 +89,7 @@ def judge(style, text, gold):
         return p, p == exp
     if style == "caption":
         s, _ = parse_caption(text, gold)
+        # none=描述未表态，单独统计，不算对也不算错
         return s, s == "ok"
     return "none", False
 
@@ -134,6 +139,10 @@ def main():
         final = turns[-1] if turns else ""
         pred, correct = judge(r["style"], final, r["label"])
         stat[r["style"]]["hit" if correct else "miss"] += 1
+        # 只有 caption 的「描述未表态」不计分；其他问法解析不出按错算（如空答案）
+        if r["style"] == "caption" and pred == "none":
+            stat[r["style"]]["none"] += 1
+            stat[r["style"]]["miss"] -= 1
         if r["style"] == "direct":
             confusion[r["label"]][pred] += 1
         fout.write(json.dumps({
@@ -150,12 +159,16 @@ def main():
     for style in sorted(stat):
         c = stat[style]
         n = c["hit"] + c["miss"]
-        print(f"{style:12s}: {c['hit']}/{n} = {100*c['hit']/max(n,1):.0f}%")
+        line = f"{style:12s}: {c['hit']}/{n} = {100*c['hit']/max(n,1):.0f}%"
+        if c.get("none"):
+            line += f"  (另{c['none']}条未表态不计分)"
+        print(line)
     allc = Counter()
     for c in stat.values():
         allc.update(c)
     n = allc["hit"] + allc["miss"]
-    print(f"{'overall':12s}: {allc['hit']}/{n} = {100*allc['hit']/max(n,1):.0f}%")
+    print(f"{'overall':12s}: {allc['hit']}/{n} = {100*allc['hit']/max(n,1):.0f}%"
+          + (f"  (另{allc['none']}条未表态)" if allc.get("none") else ""))
 
     print("\n=== direct 混淆矩阵 (行=真值 列=预测) ===")
     for t in ("push", "ride"):
