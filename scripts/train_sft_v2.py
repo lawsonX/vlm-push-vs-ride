@@ -35,6 +35,11 @@ from transformers import (
 # ViT 侧是融合 qkv，不存在这些名字，不会误伤视觉。
 LORA_TARGETS = ["q_proj", "k_proj", "v_proj", "o_proj",
                 "gate_proj", "up_proj", "down_proj"]
+# 视觉侧（Qwen2.5-VL 的 ViT 注意力是融合 qkv，一个 Linear 叫 qkv；
+# 不能用 "proj" 后缀匹配，会误伤 LLM 的 o_proj/gate_proj）
+VIT_LORA_TARGETS = ["qkv"]
+
+MODES = ["llm_lora", "llm_vit_lora", "vit_lora", "projector_only"]
 
 PLACEHOLDER = "<图片占位>"
 
@@ -192,6 +197,9 @@ def main():
     ap.add_argument("--no-grad-ckpt", action="store_true",
                     help="关掉梯度检查点（显存够时更快；默认开，3B+2048长度+A100 40GB 实测 bs4 不开会 OOM）")
     ap.add_argument("--rank", type=int, default=32)
+    ap.add_argument("--mode", choices=MODES, default="llm_lora",
+                    help="llm_lora=只训语言侧(默认,A1配方); llm_vit_lora=语言+视觉都加LoRA; "
+                         "vit_lora=只训视觉; projector_only=只训merger")
     ap.add_argument("--alpha", type=int, default=None, help="默认 2×rank")
     ap.add_argument("--max-len", type=int, default=2048)
     ap.add_argument("--warmup-steps", type=int, default=2)
@@ -204,17 +212,34 @@ def main():
     )
     model.config.use_cache = False
 
-    # 冻结视觉（编码器 + merger），语言侧全部线性层加 LoRA（docs/13 配方）
-    for name, p in model.named_parameters():
-        if "visual" in name:
-            p.requires_grad = False
-    lora_cfg = LoraConfig(
-        r=args.rank, lora_alpha=args.alpha or 2 * args.rank,
-        lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
-        target_modules=LORA_TARGETS,
-    )
-    model = get_peft_model(model, lora_cfg)
-    model.print_trainable_parameters()
+    if args.mode == "projector_only":
+        # 只训视觉→语言连接层（visual.merger），其余全冻结，不加 LoRA
+        hit = 0
+        for name, p in model.named_parameters():
+            train = "merger" in name.lower() or "projector" in name.lower()
+            p.requires_grad = train
+            hit += train
+        print(f"projector_only: {hit} 个参数张量可训练")
+    else:
+        # 冻结策略：llm_lora 冻视觉；vit_lora 冻语言；llm_vit_lora 全训 LoRA 都不冻
+        if args.mode in ("llm_lora", "llm_vit_lora"):
+            for name, p in model.named_parameters():
+                if "visual" in name:
+                    p.requires_grad = False
+        if args.mode == "vit_lora":
+            for name, p in model.named_parameters():
+                if "visual" not in name:
+                    p.requires_grad = False
+        targets = {"llm_lora": LORA_TARGETS,
+                   "vit_lora": VIT_LORA_TARGETS,
+                   "llm_vit_lora": LORA_TARGETS + VIT_LORA_TARGETS}[args.mode]
+        lora_cfg = LoraConfig(
+            r=args.rank, lora_alpha=args.alpha or 2 * args.rank,
+            lora_dropout=0.0, bias="none", task_type="CAUSAL_LM",
+            target_modules=targets,
+        )
+        model = get_peft_model(model, lora_cfg)
+        model.print_trainable_parameters()
     if not args.no_grad_ckpt:
         model.enable_input_require_grads()  # 冻结层在前时梯度检查点需要这个
 
@@ -251,18 +276,21 @@ def main():
     trainer.train()
 
     # 合并 LoRA 再保存（from_pretrained 直接加载 lora 键会静默丢适配器，E2 时期踩过的坑）
-    print("合并 LoRA → 保存纯模型…")
-    model = model.merge_and_unload()
-    trainer.model = model
+    if hasattr(model, "merge_and_unload"):
+        print("合并 LoRA → 保存纯模型…")
+        model = model.merge_and_unload()
+        trainer.model = model
     trainer.save_model(args.out + "/final")
     processor.save_pretrained(args.out + "/final")
 
     # 训练摘要：配置 + 数据 + 最终 loss，进 results/ 做实验管理
     summary = {
-        "out": args.out, "model": args.model, "data": args.data,
+        "out": args.out, "model": args.model, "data": args.data, "mode": args.mode,
         "epochs": args.epochs, "lr": args.lr, "effective_batch": args.bs * args.grad_accum,
         "lora_rank": args.rank, "lora_alpha": args.alpha or 2 * args.rank,
-        "lora_targets": LORA_TARGETS, "train_samples": len(ds),
+        "lora_targets": {"llm_lora": LORA_TARGETS, "vit_lora": VIT_LORA_TARGETS,
+                       "llm_vit_lora": LORA_TARGETS + VIT_LORA_TARGETS}.get(args.mode, []),
+        "train_samples": len(ds),
         "loss_tokens": n_loss,
         "final_train_loss": trainer.state.log_history[-1].get("loss"),
     }

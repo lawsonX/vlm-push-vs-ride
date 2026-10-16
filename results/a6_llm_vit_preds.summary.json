@@ -1,0 +1,36 @@
+{
+  "ckpt": "ckpt/a6_llm_vit/final",
+  "test": "data/sft_v2/test.jsonl",
+  "samples": 161,
+  "per_style": {
+    "direct": {
+      "hit": 48
+    },
+    "probe_seat": {
+      "hit": 29,
+      "miss": 1
+    },
+    "probe_feet": {
+      "hit": 23,
+      "miss": 12
+    },
+    "caption": {
+      "hit": 40,
+      "miss": 2,
+      "none": 6
+    }
+  },
+  "overall": {
+    "hit": 140,
+    "miss": 15,
+    "none": 6
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 24
+    },
+    "ride": {
+      "ride": 24
+    }
+  }
+}
