@@ -1,0 +1,40 @@
+{
+  "ckpt": "models/Qwen3.5-4B",
+  "test": "data/sft_v2/test.jsonl",
+  "samples": 161,
+  "per_style": {
+    "direct": {
+      "hit": 34,
+      "miss": 14
+    },
+    "probe_seat": {
+      "hit": 23,
+      "miss": 7
+    },
+    "probe_feet": {
+      "miss": 16,
+      "hit": 19
+    },
+    "caption": {
+      "hit": 40,
+      "miss": 2,
+      "none": 6
+    }
+  },
+  "overall": {
+    "hit": 116,
+    "miss": 39,
+    "none": 6
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 11,
+      "ride": 8,
+      "none": 5
+    },
+    "ride": {
+      "ride": 23,
+      "push": 1
+    }
+  }
+}

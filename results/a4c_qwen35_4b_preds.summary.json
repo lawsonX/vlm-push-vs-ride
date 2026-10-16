@@ -1,0 +1,37 @@
+{
+  "ckpt": "ckpt/a4c_qwen35_4b/final",
+  "test": "data/sft_v2/test.jsonl",
+  "samples": 161,
+  "per_style": {
+    "direct": {
+      "hit": 41,
+      "miss": 7
+    },
+    "probe_seat": {
+      "hit": 23,
+      "miss": 7
+    },
+    "probe_feet": {
+      "miss": 14,
+      "hit": 21
+    },
+    "caption": {
+      "hit": 46,
+      "miss": 2
+    }
+  },
+  "overall": {
+    "hit": 131,
+    "miss": 30
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 19,
+      "ride": 5
+    },
+    "ride": {
+      "ride": 22,
+      "push": 2
+    }
+  }
+}
