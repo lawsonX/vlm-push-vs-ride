@@ -65,7 +65,7 @@ def build_blocks(messages):
 class SFTDatasetV2(Dataset):
     """messages 多轮数据；tokenize 一次并缓存到磁盘（预处理要跑 4~5 遍 processor，不缓存每个 epoch 都要重跑）。"""
 
-    def __init__(self, data_paths, processor, cache_dir, max_len=1536):
+    def __init__(self, data_paths, processor, cache_dir, max_len=2048):
         self.items = []
         rows = []
         for p in data_paths:
@@ -187,11 +187,14 @@ def main():
     ap.add_argument("--out", required=True)
     ap.add_argument("--epochs", type=float, default=3.0)
     ap.add_argument("--lr", type=float, default=2e-4)
-    ap.add_argument("--bs", type=int, default=8, help="每卡批次（8×4=32 有效批次）")
-    ap.add_argument("--grad-accum", type=int, default=4)
+    ap.add_argument("--bs", type=int, default=4, help="每卡批次（4×8=32 有效批次）")
+    ap.add_argument("--grad-accum", type=int, default=8)
+    ap.add_argument("--no-grad-ckpt", action="store_true",
+                    help="关掉梯度检查点（显存够时更快；默认开，3B+2048长度+A100 40GB 实测 bs4 不开会 OOM）")
     ap.add_argument("--rank", type=int, default=32)
     ap.add_argument("--alpha", type=int, default=None, help="默认 2×rank")
-    ap.add_argument("--max-len", type=int, default=1536)
+    ap.add_argument("--max-len", type=int, default=2048)
+    ap.add_argument("--warmup-steps", type=int, default=2)
     ap.add_argument("--limit", type=int, default=0, help="只用前 N 条（冒烟测试用）")
     args = ap.parse_args()
 
@@ -212,6 +215,8 @@ def main():
     )
     model = get_peft_model(model, lora_cfg)
     model.print_trainable_parameters()
+    if not args.no_grad_ckpt:
+        model.enable_input_require_grads()  # 冻结层在前时梯度检查点需要这个
 
     ds = SFTDatasetV2(args.data, processor, cache_dir=Path(args.out) / "cache",
                       max_len=args.max_len)
@@ -226,9 +231,10 @@ def main():
         num_train_epochs=args.epochs,
         learning_rate=args.lr,
         lr_scheduler_type="constant",
-        warmup_ratio=0.03,
+        warmup_steps=args.warmup_steps,
         per_device_train_batch_size=args.bs,
         gradient_accumulation_steps=args.grad_accum,
+        gradient_checkpointing=not args.no_grad_ckpt,
         bf16=True,
         optim="adamw_torch",
         logging_steps=10,
