@@ -71,6 +71,8 @@ def main():
     ap.add_argument("--rank", type=int, default=16)
     ap.add_argument("--max-new", type=int, default=12)
     ap.add_argument("--save-every", type=int, default=20)
+    ap.add_argument("--temperature", type=float, default=0.7,
+                    help="采样温度；1.0 下答案非全对即全错，组内无对比就没有梯度")
     ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--hard-only", action="store_true",
                     help="先扫描提示池，只保留模型答错过至少一次的提示做 RL（全对的提示优势恒为0，无梯度）")
@@ -137,7 +139,7 @@ def main():
                 enc = encode_prompt(processor, rec["image"], rec["text"])
                 enc = {k: v.to(device) for k, v in enc.items()}
                 gen = model.generate(**enc, max_new_tokens=args.max_new, do_sample=True,
-                                     temperature=1.0, num_return_sequences=args.num_generations,
+                                     temperature=args.temperature, num_return_sequences=args.num_generations,
                                      pad_token_id=pad_id)
                 prompt_len = enc["input_ids"].shape[1]
                 for g in gen:
@@ -167,11 +169,10 @@ def main():
                       "attention_mask": att.unsqueeze(0).to(device),
                       "pixel_values": enc["pixel_values"].to(device),
                       "image_grid_thw": enc["image_grid_thw"].to(device)}
-            if "mm_token_type_ids" in enc:
-                inputs["mm_token_type_ids"] = enc["mm_token_type_ids"].to(device)
+            # 注意：不传 mm_token_type_ids（长度随手动拼接对不上，模型会从 input_ids 自行推导）
             out_logits = model(**inputs).logits[0].float()
             tgt = inputs["input_ids"][0][1:]
-            mask = labels[1:] != -100
+            mask = (labels[1:] != -100).to(device)
             if mask.sum() == 0:
                 continue
             lp = torch.log_softmax(out_logits[:-1], dim=-1)

@@ -1,0 +1,36 @@
+{
+  "ckpt": "ckpt/a5_grpo/final",
+  "test": "data/sft_v2/test.jsonl",
+  "samples": 161,
+  "per_style": {
+    "direct": {
+      "hit": 48
+    },
+    "probe_seat": {
+      "hit": 26,
+      "miss": 4
+    },
+    "probe_feet": {
+      "hit": 30,
+      "miss": 5
+    },
+    "caption": {
+      "hit": 37,
+      "miss": 2,
+      "none": 9
+    }
+  },
+  "overall": {
+    "hit": 141,
+    "miss": 11,
+    "none": 9
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 24
+    },
+    "ride": {
+      "ride": 24
+    }
+  }
+}
