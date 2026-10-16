@@ -1,0 +1,8 @@
+{"frame_id": "bili3__BV1u21KBLE5r.f100026.f000210__i0", "style": "direct", "label": "push", "pred": "ride", "correct": false, "answer_final": "骑行", "turns": ["骑行"]}
+{"frame_id": "bili3__BV1u21KBLE5r.f100026.f000210__i0", "style": "probe_seat", "label": "push", "pred": "no", "correct": true, "answer_final": "没有", "turns": ["没有"]}
+{"frame_id": "bili3__BV1u21KBLE5r.f100026.f000210__i0", "style": "probe_feet", "label": "push", "pred": "pedal", "correct": false, "answer_final": "踏板", "turns": ["踏板"]}
+{"frame_id": "bili3__BV1u21KBLE5r.f100026.f000210__i0", "style": "caption", "label": "push", "pred": "none", "correct": false, "answer_final": "这辆车是黑色的，车架上印有“MAXXIS”字样，轮胎也是黑色的。车把上有黄色的装饰，车座下方有一个黑色的包。车轮上的轮胎品牌是“MAXXIS”。", "turns": ["这辆车是黑色的，车架上印有“MAXXIS”字样，轮胎也是黑色的。车把上有黄色的装饰，车座下方有一个黑色的包。车轮上的轮胎品牌是“MAXXIS”。"]}
+{"frame_id": "visdrone__vd_9999999_00299_d_0000132__i0", "style": "direct", "label": "ride", "pred": "ride", "correct": true, "answer_final": "骑行", "turns": ["骑行"]}
+{"frame_id": "visdrone__vd_9999999_00299_d_0000132__i0", "style": "probe_feet", "label": "ride", "pred": "pedal", "correct": true, "answer_final": "踏板", "turns": ["踏板"]}
+{"frame_id": "visdrone__vd_9999999_00299_d_0000132__i0", "style": "caption", "label": "ride", "pred": "ok", "correct": true, "answer_final": "根据图片内容，无法确定该人是否在骑行过程中摔倒或受伤。", "turns": ["根据图片内容，无法确定该人是否在骑行过程中摔倒或受伤。"]}
+{"frame_id": "bili3__BV1e3411w7WL.f30080.f000090__i3", "style": "direct", "label": "ride", "pred": "ride", "correct": true, "answer_final": "骑行", "turns": ["骑行"]}

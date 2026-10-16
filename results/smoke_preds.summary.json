@@ -1,0 +1,34 @@
+{
+  "ckpt": "ckpt/smoke/final",
+  "test": "data/sft_v2/test.jsonl",
+  "samples": 8,
+  "per_style": {
+    "direct": {
+      "miss": 1,
+      "hit": 2
+    },
+    "probe_seat": {
+      "hit": 1
+    },
+    "probe_feet": {
+      "miss": 1,
+      "hit": 1
+    },
+    "caption": {
+      "miss": 1,
+      "hit": 1
+    }
+  },
+  "overall": {
+    "miss": 3,
+    "hit": 5
+  },
+  "confusion_direct": {
+    "push": {
+      "ride": 1
+    },
+    "ride": {
+      "ride": 2
+    }
+  }
+}
