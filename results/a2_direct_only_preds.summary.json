@@ -1,0 +1,38 @@
+{
+  "ckpt": "ckpt/a2_direct_only/final",
+  "test": "data/sft_v2/test.jsonl",
+  "samples": 161,
+  "per_style": {
+    "direct": {
+      "hit": 46,
+      "miss": 2
+    },
+    "probe_seat": {
+      "hit": 17,
+      "miss": 13
+    },
+    "probe_feet": {
+      "hit": 25,
+      "miss": 10
+    },
+    "caption": {
+      "miss": 6,
+      "hit": 38,
+      "none": 4
+    }
+  },
+  "overall": {
+    "hit": 126,
+    "miss": 31,
+    "none": 4
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 22,
+      "ride": 2
+    },
+    "ride": {
+      "ride": 24
+    }
+  }
+}
