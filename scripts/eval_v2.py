@@ -118,7 +118,8 @@ def main():
     ap.add_argument("--test", default="data/sft_v2/test.jsonl")
     ap.add_argument("--out", required=True)
     ap.add_argument("--limit", type=int, default=0)
-    ap.add_argument("--max-new", type=int, default=64)
+    ap.add_argument("--max-new", type=int, default=256,
+                    help="生成上限。chain/话多模型需要 256；64 会截断证据描述造成假错（A7/4B 实测）")
     args = ap.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
