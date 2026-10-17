@@ -1,0 +1,41 @@
+{
+  "ckpt": "ckpt/a8_pilot/final",
+  "test": "data/sft_v6_abs/test.jsonl",
+  "samples": 234,
+  "per_style": {
+    "direct": {
+      "hit": 43
+    },
+    "probe_seat": {
+      "hit": 28,
+      "miss": 15
+    },
+    "probe_feet": {
+      "hit": 35,
+      "miss": 8
+    },
+    "caption": {
+      "hit": 39,
+      "miss": 4
+    },
+    "chain": {
+      "hit": 27,
+      "miss": 4
+    },
+    "guide": {
+      "hit": 31
+    }
+  },
+  "overall": {
+    "hit": 203,
+    "miss": 31
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 24
+    },
+    "ride": {
+      "ride": 19
+    }
+  }
+}
