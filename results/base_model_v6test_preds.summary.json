@@ -1,0 +1,46 @@
+{
+  "ckpt": "models/Qwen2.5-VL-3B-Instruct",
+  "test": "data/sft_v6_abs/test.jsonl",
+  "samples": 234,
+  "per_style": {
+    "direct": {
+      "hit": 43
+    },
+    "probe_seat": {
+      "hit": 41,
+      "miss": 2
+    },
+    "probe_feet": {
+      "hit": 38,
+      "miss": 4,
+      "unclear": 1
+    },
+    "caption": {
+      "miss": 2,
+      "hit": 26,
+      "none": 15
+    },
+    "chain": {
+      "hit": 28,
+      "miss": 3
+    },
+    "guide": {
+      "miss": 19,
+      "hit": 12
+    }
+  },
+  "overall": {
+    "hit": 188,
+    "miss": 30,
+    "unclear": 1,
+    "none": 15
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 24
+    },
+    "ride": {
+      "ride": 19
+    }
+  }
+}

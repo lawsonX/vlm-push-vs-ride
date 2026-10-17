@@ -35,6 +35,8 @@ def parse_direct(text):
 
 def parse_probe_seat(text):
     # 「没有」要优先于「有」判断（避免"没有坐在车座上"被 "有" 命中）
+    if "看不清" in text or "无法判断" in text or "不确定" in text:
+        return "unclear"
     if "没有" in text or "未" in text or "不在" in text:
         return "no"
     if "有" in text or "坐在" in text:
@@ -43,6 +45,8 @@ def parse_probe_seat(text):
 
 
 def parse_probe_feet(text):
+    if "看不清" in text or "无法判断" in text or "不确定" in text:
+        return "unclear"
     if "踏板" in text or "踩着" in text:
         return "pedal"
     if "地上" in text or "地面" in text or "走路" in text:
@@ -76,20 +80,34 @@ def parse_caption(text, gold):
         return "none", "描述但未表态"
 
 
+def parse_chain(text):
+    """chain 问法：答案带「证据：…结论：…」结构。只取最后一个「结论」之后的部分
+    做二分类（证据段常同时出现两个词，全文搜会误判）。"""
+    idx = text.rfind("结论")
+    tail = text[idx:] if idx != -1 else text
+    lp, lr = tail.rfind("推行"), tail.rfind("骑行")
+    if lp == -1 and lr == -1:
+        return "none"
+    return "push" if lp > lr else "ride"
+
+
 def judge(style, text, gold):
-    if style == "direct":
-        return parse_direct(text), parse_direct(text) == gold
+    if style in ("direct", "guide"):  # guide 最后一轮即一词结论，同 direct 判
+        p = parse_direct(text)
+        return p, p == gold
+    if style == "chain":
+        p = parse_chain(text)
+        return p, p == gold
     if style == "probe_seat":
         p = parse_probe_seat(text)
-        exp = "yes" if gold == "ride" else "no"
+        exp = {"有": "yes", "没有": "no", "看不清": "unclear"}.get(gold, "yes" if gold == "ride" else "no")
         return p, p == exp
     if style == "probe_feet":
         p = parse_probe_feet(text)
-        exp = "pedal" if gold == "ride" else "ground"
+        exp = {"踏板": "pedal", "地上": "ground", "看不清": "unclear"}.get(gold, "pedal" if gold == "ride" else "ground")
         return p, p == exp
     if style == "caption":
         s, _ = parse_caption(text, gold)
-        # none=描述未表态，单独统计，不算对也不算错
         return s, s == "ok"
     return "none", False
 
@@ -139,9 +157,12 @@ def main():
         final = turns[-1] if turns else ""
         pred, correct = judge(r["style"], final, r["label"])
         stat[r["style"]]["hit" if correct else "miss"] += 1
-        # 只有 caption 的「描述未表态」不计分；其他问法解析不出按错算（如空答案）
+        # 不计分项：caption 的「描述未表态」、探针的「看不清」（v0.6 合法第三答案，中性）
         if r["style"] == "caption" and pred == "none":
             stat[r["style"]]["none"] += 1
+            stat[r["style"]]["miss"] -= 1
+        if r["style"] in ("probe_seat", "probe_feet") and pred == "unclear":
+            stat[r["style"]]["unclear"] += 1
             stat[r["style"]]["miss"] -= 1
         if r["style"] == "direct":
             confusion[r["label"]][pred] += 1
@@ -160,8 +181,13 @@ def main():
         c = stat[style]
         n = c["hit"] + c["miss"]
         line = f"{style:12s}: {c['hit']}/{n} = {100*c['hit']/max(n,1):.0f}%"
+        extras = []
         if c.get("none"):
-            line += f"  (另{c['none']}条未表态不计分)"
+            extras.append(f"另{c['none']}条未表态不计分")
+        if c.get("unclear"):
+            extras.append(f"另{c['unclear']}条答「看不清」不计分")
+        if extras:
+            line += "  (" + "，".join(extras) + ")"
         print(line)
     allc = Counter()
     for c in stat.values():
