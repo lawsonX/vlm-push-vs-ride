@@ -48,30 +48,34 @@ body{font-family:sans-serif;background:#1e1e1e;color:#eee;margin:0;display:flex;
 .meta{color:#999;font-size:13px}
 .skip{margin-top:auto;padding:10px;background:#7b1fa2;border:1px solid #ba68c8;border-radius:6px;color:#fff;cursor:pointer;font-size:15px}
 .invalid{padding:10px;background:#b71c1c;border:1px solid #ef5350;border-radius:6px;color:#fff;cursor:pointer;font-size:15px}
+.straddle{padding:10px;background:#e65100;border:1px solid #ffa726;border-radius:6px;color:#fff;cursor:pointer;font-size:15px}
 .banner{background:#b71c1c;color:#fff;padding:8px;border-radius:6px;font-weight:bold}
+.banner2{background:#e65100;color:#fff;padding:8px;border-radius:6px;font-weight:bold}
 </style></head><body>
 <div class="left"><img id="pic"></div>
 <div class="right">
   <div><span id="pos">-</span>/<span id="total">-</span> 已答 <span id="done">0</span> ｜ <span id="fid" class="meta"></span></div>
   <div class="bar"><div id="barfill"></div></div>
   <div id="badbanner" class="banner" style="display:none">此图已标记：不适用 / 原标签有误（v0.6 将从金标中剔除）</div>
+  <div id="straddlebanner" class="banner2" style="display:none">此图已标记：跨坐（坐在车座上、双脚着地、车静止）</div>
   <div class="q"><b>Q1：这个人有没有坐在车座上？</b><div class="opts" id="seat">
-    <button onclick="set('seat','有')">有</button>
-    <button onclick="set('seat','没有')">没有</button>
-    <button onclick="set('seat','看不清')">看不清</button>
+    <button data-val="有" onclick="set('seat','有')">有</button>
+    <button data-val="没有" onclick="set('seat','没有')">没有</button>
+    <button data-val="看不清" onclick="set('seat','看不清')">看不清</button>
   </div></div>
-  <div class="q"><b>Q2：这个人的双脚是在地上走路，还是踩在车的踏板上？</b><div class="opts" id="feet">
-    <button onclick="set('feet','地上')">在地上走路</button>
-    <button onclick="set('feet','踏板')">踩在踏板上</button>
-    <button onclick="set('feet','看不清')">看不清</button>
+  <div class="q"><b>Q2：这个人的双脚是在地上，还是踩在车的踏板上？</b><div class="opts" id="feet">
+    <button data-val="地上" onclick="set('feet','地上')">在地上（没踩踏板，不一定在走）</button>
+    <button data-val="踏板" onclick="set('feet','踏板')">踩在踏板上</button>
+    <button data-val="看不清" onclick="set('feet','看不清')">看不清</button>
   </div></div>
+  <button class="straddle" onclick="markStraddle()">🪑 跨坐：坐在车座上、双脚着地 (7)</button>
   <button class="invalid" onclick="invalidate()">✗ 此图不适用 / 原标签有误 (0)</button>
   <button class="skip" onclick="skipUnlabeled()">⤵ 跳到下一个未答的 (N)</button>
   <div class="nav">
     <button onclick="nav(-1)">← 上一张 (A)</button>
     <button onclick="nav(1)">下一张 → (D)</button>
   </div>
-  <div class="meta">说明：发绿的选项是云端已验证的答案（锁定）；你需要答的是另一个。按 1/2/3 答 Q1，按 4/5/6 答 Q2。看不清就是看不清，猜的不算。按 0 标记整图不适用（人车和问题对不上、或原推行/骑行标签本身就标错了）。</div>
+  <div class="meta">说明：按 1/2/3 答 Q1，按 4/5/6 答 Q2，看不清就是看不清，猜的不算。发绿的选项是云端已验证的答案，但你可以改（人工优先）。<b>跨坐（坐在车座上、双脚着地、车静止）按 7 一键标记</b>——金标仍算骑行，但模型会学会分辨三种状态：推行(没坐+地上)、跨坐(坐着+地上)、骑行(坐着+踏板)。按 0 标记整图不适用/原标签有误。</div>
 </div>
 <script>
 let items=[], idx=0;
@@ -91,14 +95,13 @@ async function load(){
   document.getElementById('fid').textContent=it.frame_id;
   document.getElementById('pic').src='/img/'+it.frame_id;
   document.getElementById('badbanner').style.display = it.invalid?'block':'none';
-  paint('seat', it.seat, it.seat_locked || it.invalid);
-  paint('feet', it.feet, it.feet_locked || it.invalid);
+  document.getElementById('straddlebanner').style.display = (it.straddle && !it.invalid)?'block':'none';
+  paint('seat', it.seat, (it.seat_locked || it.invalid) && !it.straddle);
+  paint('feet', it.feet, (it.feet_locked || it.invalid) && !it.straddle);
 }
 function paint(q, val, locked){
   document.querySelectorAll('#'+q+' button').forEach(b=>{
-    b.className = (b.textContent.includes('看不清')&&val==='看不清')?'sel'
-      : ((q==='seat'&&(b.textContent==='有'&&val==='有'||b.textContent==='没有'&&val==='没有'))
-      || (q==='feet'&&(b.textContent==='在地上走路'&&val==='地上'||b.textContent==='踩在踏板上'&&val==='踏板')))?'sel':'';
+    b.className = (b.dataset.val===val)?'sel':'';
     if(locked) b.className += ' locked';
   });
 }
@@ -118,9 +121,25 @@ async function invalidate(){
   const r = await (await fetch('/api/ann/'+it.frame_id,{
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({invalidate:true})})).json();
-  it.invalid=true; it.labeled=true; updateDone(r.done);
+  it.invalid=true; it.straddle=false; it.labeled=true; updateDone(r.done);
   document.getElementById('badbanner').style.display='block';
+  document.getElementById('straddlebanner').style.display='none';
   paint('seat', it.seat, true); paint('feet', it.feet, true);
+}
+async function markStraddle(){
+  const it=items[idx];
+  if(it.invalid) return;
+  // 跨坐 = Q1有 + Q2地上。人工判断优先，覆盖云端预填。
+  const r = await (await fetch('/api/ann/'+it.frame_id,{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({straddle:true})})).json();
+  it.straddle=true; it.invalid=false;
+  it.seat='有'; it.feet='地上';
+  it.seat_locked=false; it.feet_locked=false;
+  it.labeled=true; updateDone(r.done);
+  document.getElementById('straddlebanner').style.display='block';
+  document.getElementById('badbanner').style.display='none';
+  paint('seat','有',false); paint('feet','地上',false);
 }
 function nav(d){ idx=(idx+d+items.length)%items.length; load(); }
 function skipUnlabeled(){
@@ -132,6 +151,7 @@ document.addEventListener('keydown',e=>{
   if(['1','2','3'].includes(e.key)) set('seat',['有','没有','看不清'][+e.key-1]);
   else if(['4','5','6'].includes(e.key)) set('feet',['地上','踏板','看不清'][+e.key-4]);
   else if(e.key==='0') invalidate();
+  else if(e.key==='7') markStraddle();
   else if(e.key==='ArrowLeft'||e.key==='a') nav(-1);
   else if(e.key==='ArrowRight'||e.key==='d') nav(1);
   else if(e.key==='n'||e.key==='N') skipUnlabeled();
@@ -177,6 +197,14 @@ def api_ann(frame_id):
         d = request.json
         if d.get("invalidate"):
             a["invalid"] = True
+            a["straddle"] = False
+            a["labeled"] = True
+        elif d.get("straddle"):
+            # 跨坐：人工判定优先于云端预填
+            a["seat"], a["feet"] = "有", "地上"
+            a["seat_locked"] = a["feet_locked"] = False
+            a["straddle"] = True
+            a["invalid"] = False
             a["labeled"] = True
         else:
             q, val = d["q"], d["val"]
@@ -188,7 +216,8 @@ def api_ann(frame_id):
                                 "seat": a.get("seat"), "feet": a.get("feet"),
                                 "seat_locked": a.get("seat_locked", False),
                                 "feet_locked": a.get("feet_locked", False),
-                                "invalid": a.get("invalid", False)},
+                                "invalid": a.get("invalid", False),
+                                "straddle": a.get("straddle", False)},
                                ensure_ascii=False) + "\n")
     return jsonify({"ann": a, "labeled": a["labeled"],
                     "done": sum(1 for x in ANN.values() if x["labeled"])})

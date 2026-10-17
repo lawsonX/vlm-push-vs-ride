@@ -177,7 +177,7 @@ def main():
             ]))
         if "feet" in pv:
             samples.append(("probe_feet", [
-                {"role": "user", "content": IMG_PLACEHOLDER + "这个人的双脚是在地上走路，还是踩在车的踏板上？只回答「地上」或「踏板」。"},
+                {"role": "user", "content": IMG_PLACEHOLDER + "这个人的双脚是在地上，还是踩在车的踏板上？只回答「地上」或「踏板」。"},
                 {"role": "assistant", "content": pv["feet"]},
             ]))
         # 开放描述（docs/14 §1.2）：覆盖 lawson 最初发现幻觉的 caption 场景
