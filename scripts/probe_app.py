@@ -47,11 +47,14 @@ body{font-family:sans-serif;background:#1e1e1e;color:#eee;margin:0;display:flex;
 .nav button{padding:8px 14px;font-size:14px;background:#3a3a3a;color:#eee;border:1px solid #555;border-radius:6px;cursor:pointer}
 .meta{color:#999;font-size:13px}
 .skip{margin-top:auto;padding:10px;background:#7b1fa2;border:1px solid #ba68c8;border-radius:6px;color:#fff;cursor:pointer;font-size:15px}
+.invalid{padding:10px;background:#b71c1c;border:1px solid #ef5350;border-radius:6px;color:#fff;cursor:pointer;font-size:15px}
+.banner{background:#b71c1c;color:#fff;padding:8px;border-radius:6px;font-weight:bold}
 </style></head><body>
 <div class="left"><img id="pic"></div>
 <div class="right">
   <div><span id="pos">-</span>/<span id="total">-</span> 已答 <span id="done">0</span> ｜ <span id="fid" class="meta"></span></div>
   <div class="bar"><div id="barfill"></div></div>
+  <div id="badbanner" class="banner" style="display:none">此图已标记：不适用 / 原标签有误（v0.6 将从金标中剔除）</div>
   <div class="q"><b>Q1：这个人有没有坐在车座上？</b><div class="opts" id="seat">
     <button onclick="set('seat','有')">有</button>
     <button onclick="set('seat','没有')">没有</button>
@@ -62,12 +65,13 @@ body{font-family:sans-serif;background:#1e1e1e;color:#eee;margin:0;display:flex;
     <button onclick="set('feet','踏板')">踩在踏板上</button>
     <button onclick="set('feet','看不清')">看不清</button>
   </div></div>
+  <button class="invalid" onclick="invalidate()">✗ 此图不适用 / 原标签有误 (0)</button>
   <button class="skip" onclick="skipUnlabeled()">⤵ 跳到下一个未答的 (N)</button>
   <div class="nav">
     <button onclick="nav(-1)">← 上一张 (A)</button>
     <button onclick="nav(1)">下一张 → (D)</button>
   </div>
-  <div class="meta">说明：发绿的选项是云端已验证的答案（锁定）；你需要答的是另一个。按 1/2/3 答 Q1，按 4/5/6 答 Q2。看不清就是看不清，猜的不算。</div>
+  <div class="meta">说明：发绿的选项是云端已验证的答案（锁定）；你需要答的是另一个。按 1/2/3 答 Q1，按 4/5/6 答 Q2。看不清就是看不清，猜的不算。按 0 标记整图不适用（人车和问题对不上、或原推行/骑行标签本身就标错了）。</div>
 </div>
 <script>
 let items=[], idx=0;
@@ -86,8 +90,9 @@ async function load(){
   document.getElementById('pos').textContent=idx+1;
   document.getElementById('fid').textContent=it.frame_id;
   document.getElementById('pic').src='/img/'+it.frame_id;
-  paint('seat', it.seat, it.seat_locked);
-  paint('feet', it.feet, it.feet_locked);
+  document.getElementById('badbanner').style.display = it.invalid?'block':'none';
+  paint('seat', it.seat, it.seat_locked || it.invalid);
+  paint('feet', it.feet, it.feet_locked || it.invalid);
 }
 function paint(q, val, locked){
   document.querySelectorAll('#'+q+' button').forEach(b=>{
@@ -99,13 +104,23 @@ function paint(q, val, locked){
 }
 async function set(q, val){
   const it=items[idx];
-  if(it[q+'_locked']) return;
+  if(it[q+'_locked']||it.invalid) return;
   it[q]=val;
   const r = await (await fetch('/api/ann/'+it.frame_id,{
     method:'POST',headers:{'Content-Type':'application/json'},
     body:JSON.stringify({q, val})})).json();
   it.labeled=r.labeled; updateDone(r.done);
   paint(q, val, false);
+}
+async function invalidate(){
+  const it=items[idx];
+  if(!confirm('标记此图为「不适用/原标签有误」？它将计入完成，v0.6 会从金标中剔除。')) return;
+  const r = await (await fetch('/api/ann/'+it.frame_id,{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({invalidate:true})})).json();
+  it.invalid=true; it.labeled=true; updateDone(r.done);
+  document.getElementById('badbanner').style.display='block';
+  paint('seat', it.seat, true); paint('feet', it.feet, true);
 }
 function nav(d){ idx=(idx+d+items.length)%items.length; load(); }
 function skipUnlabeled(){
@@ -116,6 +131,7 @@ function skipUnlabeled(){
 document.addEventListener('keydown',e=>{
   if(['1','2','3'].includes(e.key)) set('seat',['有','没有','看不清'][+e.key-1]);
   else if(['4','5','6'].includes(e.key)) set('feet',['地上','踏板','看不清'][+e.key-4]);
+  else if(e.key==='0') invalidate();
   else if(e.key==='ArrowLeft'||e.key==='a') nav(-1);
   else if(e.key==='ArrowRight'||e.key==='d') nav(1);
   else if(e.key==='n'||e.key==='N') skipUnlabeled();
@@ -139,6 +155,7 @@ def api_list():
             "seat": a.get("seat"), "feet": a.get("feet"),
             "seat_locked": a.get("seat_locked", False),
             "feet_locked": a.get("feet_locked", False),
+            "invalid": a.get("invalid", False),
         })
     done = sum(1 for a in ANN.values() if a["labeled"])
     return jsonify({"total": len(items), "done": done, "items": items})
@@ -158,15 +175,20 @@ def api_ann(frame_id):
     a = ANN[frame_id]
     if request.method == "POST":
         d = request.json
-        q, val = d["q"], d["val"]
-        if not a.get(q + "_locked"):
-            a[q] = val
-        a["labeled"] = bool(a.get("seat")) and bool(a.get("feet"))
+        if d.get("invalidate"):
+            a["invalid"] = True
+            a["labeled"] = True
+        else:
+            q, val = d["q"], d["val"]
+            if not a.get(q + "_locked"):
+                a[q] = val
+            a["labeled"] = (bool(a.get("seat")) and bool(a.get("feet"))) or a.get("invalid", False)
         with open(LABEL_PATH, "a", encoding="utf-8") as f:
             f.write(json.dumps({"frame_id": frame_id,
                                 "seat": a.get("seat"), "feet": a.get("feet"),
                                 "seat_locked": a.get("seat_locked", False),
-                                "feet_locked": a.get("feet_locked", False)},
+                                "feet_locked": a.get("feet_locked", False),
+                                "invalid": a.get("invalid", False)},
                                ensure_ascii=False) + "\n")
     return jsonify({"ann": a, "labeled": a["labeled"],
                     "done": sum(1 for x in ANN.values() if x["labeled"])})
@@ -193,7 +215,9 @@ def load_state():
                 for q in ("seat", "feet"):
                     if not a.get(q + "_locked") and d.get(q):
                         a[q] = d[q]
-                a["labeled"] = bool(a.get("seat")) and bool(a.get("feet"))
+                if d.get("invalid"):
+                    a["invalid"] = True
+                a["labeled"] = (bool(a.get("seat")) and bool(a.get("feet"))) or a.get("invalid", False)
 
 
 def main():
