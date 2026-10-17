@@ -218,6 +218,7 @@ def main():
     ap.add_argument("--alpha", type=int, default=None, help="默认 2×rank")
     ap.add_argument("--max-len", type=int, default=2048)
     ap.add_argument("--warmup-steps", type=int, default=2)
+    ap.add_argument("--seed", type=int, default=42)
     ap.add_argument("--limit", type=int, default=0, help="只用前 N 条（冒烟测试用）")
     args = ap.parse_args()
 
@@ -283,7 +284,7 @@ def main():
         report_to=[],
         remove_unused_columns=False,
         dataloader_num_workers=2,
-        seed=42,
+        seed=args.seed,
     )
     pad_id = processor.tokenizer.pad_token_id or processor.tokenizer.eos_token_id
     trainer = Trainer(model=model, args=targs, train_dataset=ds,
