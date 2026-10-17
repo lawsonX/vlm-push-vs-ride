@@ -128,12 +128,11 @@ direct 格式从以下问句中随机选一个（每张图固定随机，可复�
 
 - Thinking Machines Lab《LoRA Without Regret》（2025-09，Schulman 等）：LoRA 在中小数据 SFT 下可与全参数微调持平；关键条件是 LoRA 覆盖 MLP 层、学习率约 10 倍、有效批次 ≤32。
 
-## 9. 当前产物状态（2026-10-15 深夜更新，v0.4）
+## 9. 当前产物状态（2026-10-17，v0.5）
 
-- **v0.4 交付包**：`E:\vlm-data\delivery_v02.zip`（86MB，交给新设备训练侧）
-  - 金标 411 张（推行 95 / 骑行 316），测试集冻结 48 张原图（名单 `test_ids.txt`），训练集配平 142 张图
-  - `train.jsonl` 721 条（142 direct + 88 probe_seat + 109 probe_feet + 142 caption + 120 chain + 120 guide）
-  - `train_aug.jsonl` 2163 条：142 训练图 × dusk/overcast/rain 经典光影增强（标签按构造继承，抽样云端验证 18/18），消融用
-  - `test.jsonl` 161 条（四种问法），永远原图
+- **v0.5**：测试集补齐 chain/guide 问法。48 张测试图云端生成证据、35 张通过人工标签校验，test.jsonl 161→**231 条**（chain/guide 各 35）。训练集不变（721 条）。
+- v0.4 交付包内容：金标 411 张（推行 95 / 骑行 316），测试集冻结 48 张原图，训练配平 142 张图；
+  train.jsonl 721 条 + train_aug.jsonl 2163 条增强样本（⚠️ A3 实证负收益，已停用，仅留档）+ test.jsonl。
+- 探针答案经 gen_probes.py 逐图云端验证；未通过验证的 273 张金标图列入人工标注待办（`probe_label_todo.txt`），用于"看不清"第三类答案实验。
 - 测试集冻结机制：make_sft_data_v2.py 传 `--test-ids test_ids.txt`，新金标一律进训练集，测试集永不变。
 - 证据链：132 张金标带判断依据；探针答案经 gen_probes.py 逐图云端验证。
