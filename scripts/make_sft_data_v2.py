@@ -75,7 +75,9 @@ def main():
     ap.add_argument("--test-ids", default=None,
                     help="测试集冻结名单文件（每行一个 frame_id）。传了之后测试集永不变，新金标全进训练集")
     ap.add_argument("--probes", default=None,
-                    help="探针答案验证文件（gen_probes.py 产出）。只有逐图验证过的探针才出样本")
+                    help="云端验证的探针答案（gen_probes.py 产出）")
+    ap.add_argument("--probe-labels", default=None,
+                    help="人工探针标注（probe_labels.jsonl，含 看不清/跨坐/不适用，优先级最高）")
     ap.add_argument("--balance", action="store_true",
                     help="训练集 push/ride 1:1 配平（推行是少数类）")
     # 2026-10-15 lawson 拍板：unsure/invalid 一律舍弃，永不进训练（含负样本）。
@@ -99,6 +101,55 @@ def main():
         del gold[fid]
     if missing:
         print(f"warning: {len(missing)} 张金标找不到图文件，跳过")
+
+    # ---- 探针答案合并（v0.6）----
+    # 三来源优先级：lawson 人工标注(probe_labels.jsonl) > 云端验证(probes.jsonl) > 无。
+    # 人工标注每条保存行可能只有部分字段，按"每个问题取最后一个非空值"合并；
+    # invalid/straddle 任一行标过即算。
+    cloud_probes = {}
+    if args.probes:
+        for l in open(args.probes, encoding="utf-8"):
+            if l.strip():
+                d = json.loads(l)
+                cloud_probes[d["frame_id"]] = d
+    human = {}   # fid -> {seat, feet, invalid, straddle}
+    if args.probe_labels:
+        for l in open(args.probe_labels, encoding="utf-8"):
+            if not l.strip():
+                continue
+            d = json.loads(l)
+            rec = human.setdefault(d["frame_id"], {})
+            for q in ("seat", "feet"):
+                if d.get(q):
+                    rec[q] = d[q]
+            if d.get("invalid"):
+                rec["invalid"] = True
+            if d.get("straddle"):
+                rec["straddle"] = True
+
+    probes = {}
+    for fid in set(cloud_probes) | set(human):
+        hh, c = human.get(fid, {}), cloud_probes.get(fid, {})
+        p = {}
+        for q in ("seat", "feet"):
+            ans = hh.get(q) or (c.get(q) if q in c else None)
+            if ans:
+                p[q] = ans
+        if p:
+            probes[fid] = p
+    n_h = len(human)
+    print(f"探针答案：人工标注 {n_h} 张，合并后覆盖 {len(probes)} 张金标图")
+
+    # ---- 整图不适用/标错：从金标剔除（lawson 现场纠错，2026-10-17）----
+    invalid_ids = {fid for fid, h in human.items() if h.get("invalid")}
+    n_test_invalid = len(invalid_ids & set(gold) & set(args.test_ids and
+                         {l.strip() for l in open(args.test_ids, encoding="utf-8") if l.strip()} or set()))
+    for fid in invalid_ids:
+        gold.pop(fid, None)
+    straddle_ids = {fid for fid, h in human.items() if h.get("straddle")}
+    if invalid_ids:
+        print(f"剔除不适用/纠错图 {len(invalid_ids)} 张（其中原属测试集 {n_test_invalid} 张，测试集相应缩小）")
+    print(f"跨坐图 {len(straddle_ids & set(gold))} 张（金标仍算骑行，描述题写明跨坐）")
 
     # ---- 按图划分训练/测试 ----
     # 铁律：测试集冻结。传了 --test-ids 就用文件里那套（首批 48 张），永不动摇；
@@ -140,14 +191,6 @@ def main():
     ftest = open(out_dir / "test.jsonl", "w", encoding="utf-8")
     report = {"train": {}, "test": {}}
 
-    # 探针答案（逐图云端验证过，防与图矛盾）；没有验证结果的图不出探针样本
-    probes = {}
-    if args.probes:
-        for l in open(args.probes, encoding="utf-8"):
-            if l.strip():
-                d = json.loads(l)
-                probes[d["frame_id"]] = d
-
     def img_path(fid):
         p = str(find_image(frames_dir, fid))
         if args.strip_prefix and p.startswith(args.strip_prefix):
@@ -172,16 +215,18 @@ def main():
         samples = [("direct", msgs_direct)]
         if "seat" in pv:
             samples.append(("probe_seat", [
-                {"role": "user", "content": IMG_PLACEHOLDER + "这个人有没有坐在车座上？只回答「有」或「没有」。"},
+                {"role": "user", "content": IMG_PLACEHOLDER + "这个人有没有坐在车座上？只回答「有」、「没有」或「看不清」。"},
                 {"role": "assistant", "content": pv["seat"]},
             ]))
         if "feet" in pv:
             samples.append(("probe_feet", [
-                {"role": "user", "content": IMG_PLACEHOLDER + "这个人的双脚是在地上，还是踩在车的踏板上？只回答「地上」或「踏板」。"},
+                {"role": "user", "content": IMG_PLACEHOLDER + "这个人的双脚是在地上，还是踩在车的踏板上？只回答「地上」、「踏板」或「看不清」。"},
                 {"role": "assistant", "content": pv["feet"]},
             ]))
         # 开放描述（docs/14 §1.2）：覆盖 lawson 最初发现幻觉的 caption 场景
-        if ev:
+        if fid in straddle_ids:
+            caption_ans = "图中的人跨坐在车座上，双脚着地，车辆处于静止状态。"
+        elif ev:
             caption_ans = f"图中可以看到：{ev}。综合这些迹象，这个人正在{word}这辆车。"
         else:
             caption_ans = f"图中的人正在{word}这辆车。"

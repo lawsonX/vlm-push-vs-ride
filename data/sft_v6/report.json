@@ -1,0 +1,24 @@
+{
+  "annotations": 1119,
+  "gold": 375,
+  "test_images": 43,
+  "train_images": 136,
+  "samples": {
+    "train": {
+      "direct": 136,
+      "probe_seat": 136,
+      "probe_feet": 136,
+      "caption": 136,
+      "chain": 118,
+      "guide": 118
+    },
+    "test": {
+      "direct": 43,
+      "probe_seat": 43,
+      "probe_feet": 43,
+      "caption": 43,
+      "chain": 31,
+      "guide": 31
+    }
+  }
+}

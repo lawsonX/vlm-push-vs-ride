@@ -1,0 +1,317 @@
+{"frame_id": "bili3__BV1184JzmE4r.f100022.f000175__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false}
+{"frame_id": "bili3__BV1184JzmE4r.f100022.f000175__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false}
+{"frame_id": "bili3__BV11M4y1V7EQ.f100026.f000075__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV11M4y1V7EQ.f100026.f000075__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV11M4y1V7EQ.f100026.f000075__i2", "seat": "没有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV11M4y1V7EQ.f100026.f000075__i2", "seat": "没有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV11a4y1h76d.f30077.f000150__i0", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false}
+{"frame_id": "bili3__BV11c411k7md.f30080.f000210__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV12DSYBcEQt.f100026.f000000__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV12DSYBcEQt.f100026.f000000__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV12DSYBcEQt.f100026.f000000__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV12DSYBcEQt.f100026.f000000__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV12ep465EaE.f30080.f000000__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV161vaByEcq.f30080.f000090__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV161vaByEcq.f30080.f000120__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV161vaByEcq.f30080.f000120__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV161vaByEcq.f30080.f000120__i2", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false}
+{"frame_id": "bili3__BV161vaByEcq.f30080.f000180__i3", "seat": "有", "feet": "踏板", "seat_locked": true, "feet_locked": false}
+{"frame_id": "bili3__BV161vaByEcq.f30080.f000210__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV161vaByEcq.f30080.f000210__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV161vaByEcq.f30080.f000210__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV17G411X7Wr.f30077.f000210__i0", "seat": "没有", "feet": "踏板", "seat_locked": false, "feet_locked": true}
+{"frame_id": "bili3__BV1184JzmE4r.f100022.f000175__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": true}
+{"frame_id": "bili3__BV11a4y1h76d.f30077.f000150__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false}
+{"frame_id": "bili3__BV11a4y1h76d.f30077.f000150__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false}
+{"frame_id": "bili3__BV11a4y1h76d.f30077.f000150__i0", "seat": "没有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false}
+{"frame_id": "bili3__BV11M4y1V7EQ.f100026.f000075__i2", "seat": "没有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true}
+{"frame_id": "bili3__BV1184JzmE4r.f100022.f000175__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": true}
+{"frame_id": "bili3__BV11a4y1h76d.f30077.f000150__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false}
+{"frame_id": "bili3__BV11a4y1h76d.f30077.f000150__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": true}
+{"frame_id": "bili3__BV11c411k7md.f30080.f000210__i1", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV11c411k7md.f30080.f000210__i1", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV161vaByEcq.f30080.f000120__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV161vaByEcq.f30080.f000180__i3", "seat": "有", "feet": "踏板", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV17G411X7Wr.f30077.f000210__i0", "seat": "没有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV18vyTBmEVX.f100026.f000690__i0", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000150__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000150__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000150__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000180__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000180__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000180__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000180__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000210__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000210__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000210__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000240__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19RaD6JE7v.f100026.f000240__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19V4y197CZ.f30080.f000000__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19V4y197CZ.f30080.f000090__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19V4y197CZ.f30080.f000210__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV19cp86YE16.f30077.f000060__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1B253zDEmK.f100027.f000150__i1", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1C1ht6PEiP.f100024.f000000__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1C1ht6PEiP.f100024.f000030__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1C1ht6PEiP.f100024.f000060__i0", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1C1ht6PEiP.f100024.f000180__i0", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1Dw411q7Mv.f30077.f000175__i1", "seat": "有", "feet": "踏板", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1Gu411w7RZ.f30080.f000030__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1KRzABDEuP.f100026.f000090__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1KRzABDEuP.f100026.f000120__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1KRzABDEuP.f100026.f000120__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1KRzABDEuP.f100026.f000120__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1Ku41187bY.f100113.f000000__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1MtwYzcEtK.f100026.f000060__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1U24y1Z7Y9.f30077.f000030__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1U24y1Z7Y9.f30077.f000090__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1VGtd6SEe3.f30080.f000030__i0", "seat": "有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1VSYE6tELd.f30080.f000090__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1VSYE6tELd.f30080.f000090__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1VahR6ZEYd.f30077.f000112__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1VahR6ZEYd.f30077.f000140__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1VahR6ZEYd.f30077.f000168__i1", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1W7411T7ZG.f30077.f000100__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1W7411T7ZG.f30077.f000175__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1WkKzzUEJD.f100024.f000060__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1Y9eb6bEzt.f100024.f000072__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1Z1jkzzEFU.f100026.f000050__i1", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1Z1jkzzEFU.f100026.f000200__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1Z7a36GE7k.f100026.f000060__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1Z7a36GE7k.f100026.f000150__i0", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1ZVtkeGEoi.f100026.f000060__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1aCKf6zEu8.f30077.f000030__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1aCKf6zEu8.f30077.f000060__i1", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1aCKf6zEu8.f30077.f000060__i1", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1bY9hBzEqa.f100026.f000120__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1cRmKY7Emd.f100026.f000030__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1cRmKY7Emd.f100026.f000090__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1cRmKY7Emd.f100026.f000090__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1cRmKY7Emd.f100026.f000120__i1", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1cRmKY7Emd.f100026.f000120__i2", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1cRmKY7Emd.f100026.f000120__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1cRmKY7Emd.f100026.f000150__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1e3411w7WL.f30080.f000030__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1e3411w7WL.f30080.f000030__i2", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1e3411w7WL.f30080.f000090__i2", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1e3411w7WL.f30080.f000090__i3", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1e3411w7WL.f30080.f000150__i2", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1e3411w7WL.f30080.f000150__i3", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1f9ht6ZECj.f100026.f000210__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1fVDcBFESF.f30064.f000120__i1", "seat": "没有", "feet": null, "seat_locked": true, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1fVDcBFESF.f30064.f000150__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1fVDcBFESF.f30064.f000180__i3", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1fVDcBFESF.f30064.f000210__i0", "seat": null, "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1fVDcBFESF.f30064.f000210__i1", "seat": null, "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1fVDcBFESF.f30064.f000210__i3", "seat": null, "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1gHa86pEd8.f100026.f000210__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1gHa86pEd8.f100026.f000240__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1hKa96DEjZ.f30066.f000060__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1ibJ8zCEdD.f30066.f000150__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1jDaT6PEQ6.f30064.f000120__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1jEtye2EtB.f100113.f000150__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1jEtye2EtB.f100113.f000150__i2", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1jEtye2EtB.f100113.f000150__i3", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1jsH464Eig.f100026.f000000__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1k8411f7vm.f100026.f000000__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1k8411f7vm.f100026.f000180__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1o14y1G7jT.f100026.f000030__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1oqsVeHE5X.f100026.f000000__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1pie763Emn.f30077.f000180__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1pie763Emn.f30077.f000210__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1sL4y1p7xo.f100027.f000180__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1tf421Q74P.f100026.f000087__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1u21KBLE5r.f100026.f000030__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1u21KBLE5r.f100026.f000060__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1u21KBLE5r.f100026.f000150__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1u21KBLE5r.f100026.f000180__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1x9ypBDEQX.f100026.f000000__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1xZU6B1Eqi.f30080.f000060__i1", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1xZU6B1Eqi.f30080.f000150__i0", "seat": "有", "feet": null, "seat_locked": true, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1xZU6B1Eqi.f30080.f000150__i0", "seat": "有", "feet": null, "seat_locked": true, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "bili3__BV1yU4y1R7N5.f30077.f000180__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1yUaw6FEBx.f30077.f000030__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1yUaw6FEBx.f30077.f000030__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1yUaw6FEBx.f30077.f000060__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili3__BV1zd736LEPh.f100026.f000058__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1zd736LEPh.f100026.f000087__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1zd736LEPh.f100026.f000116__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili4__BV12UeD63Ee8.f100026.f000090__i1", "seat": "有", "feet": null, "seat_locked": true, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "bili4__BV12asuzUEte.f30064.f000060__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili4__BV12asuzUEte.f30064.f000120__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili4__BV1Cf421f7s8.f30080.f000000__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili4__BV1H341177Jg.f30077.f000030__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili4__BV1NNt362Ef3.f30080.f000000__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili4__BV1SN4y1i7v9.f30064.f000600__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili4__BV1SN4y1i7v9.f30064.f000600__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili4__BV1jUmQBtELX.f30077.f000030__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili4__BV1ke4y157zx.f100026.f000025__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili4__BV1ke4y157zx.f100026.f000275__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili4__BV1mC7V6wE4T.f30080.f000030__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "bili5__BV1Q54y1L74D.f30066.f000075__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili5__BV1Q54y1L74D.f30066.f000125__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili5__BV1Q54y1L74D.f30066.f000150__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili5__BV1xu41147Ae.f100026.f000420__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1494y1S7S6.f30032.f000184__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1494y1S7S6.f30032.f000184__i2", "seat": "有", "feet": "踏板", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000000__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000000__i1", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000000__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000030__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000060__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000090__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000120__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000120__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000150__i1", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000180__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000180__i1", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000210__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000210__i1", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000270__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1aJ3izvEHP.f30033.f000150__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1dUvzBdEqa.f30033.f000200__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1ek4y157nS.f30077.f000240__i1", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV11a4y1h76d.f30077.f000120__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV11a4y1h76d.f30077.f000180__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV11a4y1h76d.f30077.f000180__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV11a4y1h76d.f30077.f000210__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV11aXzBEEuN.f100026.f000180__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "items_bili3__BV12ep465EaE.f30080.f000000__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV12ep465EaE.f30080.f000060__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV161vaByEcq.f30080.f000210__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV161vaByEcq.f30080.f000210__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV16iYsz6E2v.f30080.f000000__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV17z4y1Q76D.f30080.f000000__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV17z4y1Q76D.f30080.f000000__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV18vyTBmEVX.f100026.f000660__i1", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "items_bili3__BV18vyTBmEVX.f100026.f000660__i2", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "items_bili3__BV19RaD6JE7v.f100026.f000210__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV19RaD6JE7v.f100026.f000240__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV19RaD6JE7v.f100026.f000240__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV19RaD6JE7v.f100026.f000240__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV19V4y197CZ.f30080.f000030__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV19V4y197CZ.f30080.f000060__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV19V4y197CZ.f30080.f000090__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV19cp86YE16.f30077.f000180__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV19cp86YE16.f30077.f000210__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000000__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000030__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000030__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000030__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000090__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000090__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000120__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000120__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000150__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000150__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Gu411w7RZ.f30080.f000150__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1H2YMzfEC5.f30077.f000210__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1JkC4BDEU4.f100026.f000210__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1KRzABDEuP.f100026.f000090__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1U24y1Z7Y9.f30077.f000150__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1VGtd6SEe3.f30080.f000060__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1VSYE6tELd.f30080.f000090__i1", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1W7411d77n.f30066.f000050__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1Wqbn6zEp7.f30077.f000240__i1", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1Y9eb6bEzt.f100024.f000072__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Z1jkzzEFU.f100026.f000150__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "items_bili3__BV1Z7a36GE7k.f100026.f000030__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Z7a36GE7k.f100026.f000060__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1Z7a36GE7k.f100026.f000120__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1bY9hBzEqa.f100026.f000090__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1bY9hBzEqa.f100026.f000150__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1e3411w7WL.f30080.f000120__i2", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1e3411w7WL.f30080.f000210__i2", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1f9ht6ZECj.f100026.f000090__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1f9ht6ZECj.f100026.f000090__i0", "seat": "没有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1f9ht6ZECj.f100026.f000120__i0", "seat": "没有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1f9ht6ZECj.f100026.f000150__i0", "seat": "没有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1f9ht6ZECj.f100026.f000180__i0", "seat": "没有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1fVDcBFESF.f30064.f000120__i2", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1gHa86pEd8.f100026.f000210__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1gHa86pEd8.f100026.f000240__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1geH46nECq.f100026.f000000__i1", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1geH46nECq.f100026.f000000__i1", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "items_bili3__BV1geH46nECq.f100026.f000060__i0", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "items_bili3__BV1hZ4y1g7AP.f30080.f000180__i0", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "items_bili3__BV1jEtye2EtB.f100113.f000060__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1jEtye2EtB.f100113.f000060__i1", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1jEtye2EtB.f100113.f000090__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1jEtye2EtB.f100113.f000090__i2", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1jEtye2EtB.f100113.f000090__i3", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1jEtye2EtB.f100113.f000210__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili3__BV1jEtye2EtB.f100113.f000210__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "items_bili__BV1B253zDEmK.f100027.f000240__i1", "seat": "没有", "feet": "看不清", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "items_bili__BV1WkKzzUEJD.f100024.f000150__i1", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "items_bili__BV1WkKzzUEJD.f100024.f000150__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "items_bili__BV1sL4y1p7xo.f100027.f000180__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "mot17__m02_000442__i3", "seat": "有", "feet": null, "seat_locked": true, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "mot17__m02_000477__i1", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "mot17__m02_000477__i3", "seat": null, "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "mot17__m02_000484__i2", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "mot17__m02_000484__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "mot17__m02_000498__i2", "seat": "有", "feet": "踏板", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_0000135_01638_d_0000152__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_0000137_00960_d_0000160__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_0000144_01201_d_0000001__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_0000165_01525_d_0000091__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_0000166_00358_d_0000117__i2", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "visdrone__vd_0000166_01158_d_0000121__i1", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "visdrone__vd_0000166_01558_d_0000123__i3", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "visdrone__vd_0000167_00984_d_0000129__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_0000318_03401_d_0000571__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "visdrone__vd_9999937_00000_d_0000033__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999966_00000_d_0000053__i0", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "visdrone__vd_9999966_00000_d_0000064__i3", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999966_00000_d_0000064__i3", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999966_00000_d_0000127__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999966_00000_d_0000137__i0", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999966_00000_d_0000137__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999966_00000_d_0000137__i1", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999966_00000_d_0000137__i1", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": true, "straddle": false}
+{"frame_id": "visdrone__vd_9999998_00260_d_0000214__i1", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "visdrone__vd_9999998_00368_d_0000320__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999998_00372_d_0000324__i3", "seat": null, "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00247_d_0000106__i3", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00249_d_0000107__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00295_d_0000130__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00299_d_0000132__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00301_d_0000133__i0", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00303_d_0000134__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00307_d_0000136__i0", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00307_d_0000136__i1", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00348_d_0000153__i1", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00360_d_0000156__i2", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00362_d_0000157__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00362_d_0000157__i2", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00362_d_0000157__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00364_d_0000158__i2", "seat": null, "feet": "地上", "seat_locked": false, "feet_locked": true, "invalid": true, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00370_d_0000161__i0", "seat": "有", "feet": "踏板", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00374_d_0000162__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00376_d_0000163__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00378_d_0000164__i1", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00378_d_0000164__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00382_d_0000166__i0", "seat": "有", "feet": null, "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00382_d_0000166__i0", "seat": "有", "feet": "看不清", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00382_d_0000166__i1", "seat": "有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": true}
+{"frame_id": "visdrone__vd_9999999_00396_d_0000173__i1", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00396_d_0000173__i2", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00402_d_0000176__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00404_d_0000177__i0", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00406_d_0000178__i1", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00406_d_0000178__i2", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00412_d_0000181__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": true, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00412_d_0000181__i1", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00414_d_0000182__i3", "seat": "没有", "feet": "地上", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00420_d_0000185__i2", "seat": "没有", "feet": "看不清", "seat_locked": true, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1cRmKY7Emd.f100026.f000120__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1cRmKY7Emd.f100026.f000120__i2", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1fVDcBFESF.f30064.f000210__i0", "seat": "没有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1fVDcBFESF.f30064.f000210__i1", "seat": "没有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili3__BV1fVDcBFESF.f30064.f000210__i3", "seat": "没有", "feet": "地上", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000150__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000180__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "bili__BV1WkKzzUEJD.f100024.f000210__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00301_d_0000133__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00307_d_0000136__i0", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
+{"frame_id": "visdrone__vd_9999999_00307_d_0000136__i1", "seat": "有", "feet": "踏板", "seat_locked": false, "feet_locked": false, "invalid": false, "straddle": false}
