@@ -1,0 +1,44 @@
+{
+  "ckpt": "ckpt/a11_union_s42/final",
+  "test": "data/sft_v6_abs/test.jsonl",
+  "samples": 234,
+  "per_style": {
+    "direct": {
+      "hit": 39,
+      "miss": 4
+    },
+    "probe_seat": {
+      "hit": 30,
+      "miss": 13
+    },
+    "probe_feet": {
+      "hit": 36,
+      "miss": 7
+    },
+    "caption": {
+      "hit": 41,
+      "miss": 2
+    },
+    "chain": {
+      "hit": 20,
+      "miss": 11
+    },
+    "guide": {
+      "hit": 29,
+      "miss": 2
+    }
+  },
+  "overall": {
+    "hit": 195,
+    "miss": 39
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 24
+    },
+    "ride": {
+      "push": 4,
+      "ride": 15
+    }
+  }
+}
