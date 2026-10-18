@@ -1,0 +1,36 @@
+{
+ "base": "v0.6",
+ "changes": {
+  "作废移除样本": 22,
+  "探针答案更新": 10,
+  "跨坐帧label改正": [
+   "visdrone__vd_0000166_01558_d_0000123__i3",
+   "visdrone__vd_0000166_01558_d_0000123__i3",
+   "visdrone__vd_0000166_01558_d_0000123__i3",
+   "visdrone__vd_0000166_01558_d_0000123__i3"
+  ],
+  "跨坐caption补注": 7
+ },
+ "definition_A": "脚踩车身任何承脚部位都算「踏板」，只有脚接触地面才算「地上」（lawson 2026-10-18 拍板）",
+ "gold": 371,
+ "train_images": 130,
+ "test_images": 42,
+ "samples": {
+  "train": {
+   "direct": 130,
+   "probe_seat": 130,
+   "probe_feet": 130,
+   "caption": 130,
+   "chain": 114,
+   "guide": 114
+  },
+  "test": {
+   "direct": 42,
+   "probe_seat": 42,
+   "probe_feet": 42,
+   "caption": 42,
+   "chain": 30,
+   "guide": 30
+  }
+ }
+}
