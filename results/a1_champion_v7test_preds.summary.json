@@ -1,0 +1,40 @@
+{
+  "ckpt": "ckpt/a1_baseline/final",
+  "test": "data/sft_v7_abs/test.jsonl",
+  "samples": 228,
+  "per_style": {
+    "direct": {
+      "hit": 42
+    },
+    "probe_seat": {
+      "hit": 40,
+      "miss": 2
+    },
+    "probe_feet": {
+      "hit": 36,
+      "miss": 6
+    },
+    "caption": {
+      "hit": 38,
+      "miss": 4
+    },
+    "chain": {
+      "hit": 30
+    },
+    "guide": {
+      "hit": 30
+    }
+  },
+  "overall": {
+    "hit": 216,
+    "miss": 12
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 22
+    },
+    "ride": {
+      "ride": 20
+    }
+  }
+}
