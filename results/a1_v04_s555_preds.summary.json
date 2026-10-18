@@ -1,0 +1,43 @@
+{
+  "ckpt": "ckpt/a1_v04_s555/final",
+  "test": "data/sft_v6_abs/test.jsonl",
+  "samples": 234,
+  "per_style": {
+    "direct": {
+      "hit": 40,
+      "miss": 3
+    },
+    "probe_seat": {
+      "hit": 30,
+      "miss": 13
+    },
+    "probe_feet": {
+      "hit": 26,
+      "miss": 17
+    },
+    "caption": {
+      "hit": 42,
+      "miss": 1
+    },
+    "chain": {
+      "hit": 28,
+      "miss": 3
+    },
+    "guide": {
+      "hit": 31
+    }
+  },
+  "overall": {
+    "hit": 197,
+    "miss": 37
+  },
+  "confusion_direct": {
+    "push": {
+      "push": 21,
+      "ride": 3
+    },
+    "ride": {
+      "ride": 19
+    }
+  }
+}
